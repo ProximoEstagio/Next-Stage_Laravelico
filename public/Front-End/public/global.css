@@ -1,0 +1,1177 @@
+/* --- --- Configurações Básicas --- --- */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "FontePadrao";
+}
+
+:root {
+  /* --- --- Cores Paleta --- --- */
+
+  --vermelho: #ae0f10;
+  --vermelho-hover: #bd4242;
+  --vermelho-escuro: #8d0b0b;
+  --cinza-paleta: #4b555c;
+  --cinza: #525252;
+  --cinza-hover: #9191917a;
+  --cinza-claro: #c7c7c7;
+  --background-color: white;
+  --cor-border: #e1e1e1;
+  --fundo: rgba(0, 0, 0, 0.05);
+
+  /* --- --- Cores Icones --- --- */
+
+  --check: #26883c;
+  --clock: #eba500;
+  --off: #cd060e;
+  --eye: #0947d7;
+  --check-50: #ecf7ef;
+  --clock-50: #fffaeb;
+  --off-50: #fdeae7;
+  --eye-50: #ebf3ff;
+}
+
+/* --- --- Modo Escuro --- --- */
+
+[tema="dark"] {
+  --cinza: #e0e0e0;
+  --cinza-claro: #c0c0c0;
+  --background-color: #302f2f;
+  --fundo: #1d1d1d;
+  --cor-border: #2a2a2a;
+
+  --eye: #2986ff;
+  --check-50: #0fff1b20;
+  --clock-50: #ffcc0015;
+  --off-50: #ff000030;
+  --eye-50: #004cff40;
+
+  .eye {
+    background-image: url(icons/eyeDark.svg);
+    border: var(--eye) 1px solid;
+  }
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  margin: 0px;
+  margin-top: 75px;
+  background-color: var(--fundo);
+  font-family: "FontePadrao";
+}
+
+/* --- --- Fonte e escrita --- --- */
+
+@font-face {
+  font-family: "FontePadrao";
+  src: url("font/Montserrat-VariableFont_wght.ttf") format("truetype");
+}
+
+p {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--cinza);
+  line-height: 1.4;
+  text-align: justify;
+  font-family: "FontePadrao";
+}
+
+a {
+  text-decoration: none;
+  font-family: "FontePadrao";
+}
+
+/* --- --- Orientação DIV --- --- */
+
+.cl {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.rw {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+}
+
+.cc {
+  justify-content: center;
+  align-items: center;
+}
+
+/* --- --- Classes básicas --- --- */
+
+/* --- --- Gap --- --- */
+
+.g4 {
+  gap: 4px;
+}
+
+.g8 {
+  gap: 8px;
+}
+
+.g16 {
+  gap: 16px;
+}
+
+.g32 {
+  gap: 32px;
+}
+
+.g64 {
+  gap: 64px;
+}
+
+/* --- --- Padding --- --- */
+
+.p4 {
+  padding: 4px;
+}
+
+.p8 {
+  padding: 8px;
+}
+
+.p16 {
+  padding: 16px;
+}
+
+.p32 {
+  padding: 32px;
+}
+
+/* --- --- Justify-Content --- --- */
+
+.jc-sb {
+  justify-content: space-between;
+}
+
+.jc-sa {
+  justify-content: space-around;
+}
+
+.al-fs {
+  align-items: flex-start;
+}
+
+.al-fe {
+  align-items: flex-end;
+}
+
+.as-fs {
+  align-self: flex-start;
+}
+
+.as-fe {
+  align-self: flex-end;
+}
+
+/* --- --- Width --- --- */
+
+.w10c {
+  width: 10%;
+}
+
+.w15c {
+  width: 15%;
+}
+
+.w20c {
+  width: 20%;
+}
+
+.w28c {
+  width: 28%;
+}
+
+.w35c {
+  width: 35%;
+}
+
+.w45c {
+  width: 45%;
+}
+
+.w80c {
+  width: 80%;
+}
+
+/* --- --- Font Size --- --- */
+
+.fs16 {
+  font-size: 16px;
+}
+
+.fs18 {
+  font-size: 18px;
+}
+
+.fs28 {
+  font-size: 28px;
+}
+
+.fs36 {
+  font-size: 36px;
+}
+
+/* --- --- Botões --- --- */
+
+/* --- --- Configuração botão normal --- --- */
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  width: 100%;
+  height: 44px;
+  padding: 12px;
+  border-radius: 5px;
+  border: none;
+
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+
+  transition: all 500ms ease;
+}
+
+button p {
+  line-height: 1;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+/* --- --- Botão Vermelho --- --- */
+
+.btn-V {
+  background-color: var(--vermelho);
+  color: #fff;
+}
+
+.btn-V > p {
+  color: #fff;
+}
+
+.btn-V:hover {
+  background-color: var(--vermelho-escuro);
+}
+
+/* --- --- Botão Cinza --- --- */
+
+.btn-C {
+  background-color: var(--cinza-paleta);
+  color: #fff;
+}
+
+.btn-C > p {
+  color: #fff;
+}
+
+.btn-C:hover {
+  background-color: var(--cinza-paleta);
+}
+
+/* --- --- Botão Link --- --- */
+
+.btn-link {
+  background-color: #fff;
+  color: var(--cinza-paleta);
+  border: 1px solid var(--cinza-paleta);
+  align-self: flex-end;
+  width: fit-content;
+}
+
+.btn-link:hover {
+  background-color: var(--cor-border);
+}
+
+.fc {
+  width: fit-content;
+}
+
+/* --- --- Botão Validar --- --- */
+
+.btn-validar {
+  border: 1px solid var(--check);
+  background-color: #fff;
+  transition: 500ms;
+}
+
+.btn-validar:hover {
+  background-color: var(--check-50);
+}
+
+.btn-validar > p {
+  color: var(--check);
+  font-size: 18px;
+}
+
+/* --- --- Botão Invalidar --- --- */
+
+.btn-invalidar {
+  border: 1px solid var(--vermelho);
+  background-color: #fff;
+  transition: 500ms ease;
+}
+
+.btn-invalidar:hover {
+  background-color: var(--off-50);
+}
+
+.btn-invalidar > p {
+  color: var(--vermelho);
+  font-size: 18px;
+}
+
+/* --- --- Botão Arquivo --- --- */
+
+/* Não esquecer de colocar onclick e input file */
+
+/* onclick="document.getElementById('fileinput').click()" */
+/* <input type="file" id="fileinput"> */
+
+.btn-F {
+  background-color: #fff;
+  border: dashed 2px var(--cor-border);
+  color: var(--cinza-paleta);
+}
+
+.btn-F:hover {
+  border: solid 2px var(--cinza-paleta);
+}
+
+/* --- --- NAV BAR --- --- */
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  height: 75px;
+  background-color: var(--vermelho);
+  align-items: center;
+  box-shadow: 0px 2px 16px -12px #000;
+  z-index: 1000;
+}
+
+.nav-content {
+  width: 80%;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: var(--vermelho);
+}
+
+/* --- --- NAV BAR - Container Esquerda --- --- */
+
+.nav-left {
+  gap: 32px;
+  width: fit-content;
+  height: fit-content;
+
+  background-color: var(--vermelho);
+}
+
+.nav-logo {
+  width: 50px;
+  height: 50px;
+}
+
+.nav-options {
+  gap: 8px;
+  width: fit-content;
+  align-items: center;
+}
+
+.nav-options a {
+  max-height: 40px;
+}
+
+/* --- --- NAV BAR - Container Esquerda --- --- */
+
+.hamburguer {
+  display: none;
+}
+
+/* --- --- NAV BAR - Perfil direita --- --- */
+
+.nav-perfil {
+  padding: 5px 10px;
+  gap: 16px;
+  border-radius: 5px;
+  width: fit-content;
+  align-items: center;
+  transition: all 500ms ease;
+
+  background-color: var(--vermelho);
+}
+
+.nav-perfil:hover {
+  background-color: var(--vermelho-hover);
+}
+
+.foto-perfil {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: #fff 1px solid;
+}
+
+.name {
+  font-size: 20px;
+  font-weight: 400;
+  color: #fff;
+}
+
+.email {
+  font-size: 14px;
+  font-weight: 400;
+  color: #fff;
+  opacity: 80%;
+}
+
+/* --- --- ICONES --- --- */
+
+/* --- --- Fazer icones funcionarem --- --- */
+
+.icon {
+  width: 40px;
+  height: 40px;
+  background-size: 70%;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 5px;
+  transition: all 500ms ease;
+}
+
+.icon-nav {
+  width: 40px;
+  height: 40px;
+  background-size: 70%;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 5px;
+  transition: all 500ms ease;
+}
+
+.icon-nav:hover {
+  background-color: var(--vermelho-hover);
+}
+
+.icon-list {
+  min-width: 35px;
+  height: 35px;
+  background-size: 80%;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 5px;
+}
+
+.icon-link {
+  height: 25px;
+  width: 25px;
+  background-size: 80%;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 5px;
+  background-image: url("icons/link.svg");
+}
+
+.link-empty {
+  height: 25px;
+  width: 25px;
+  background-size: 80%;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 5px;
+  background-image: url("icons/link.svg");
+}
+
+/* --- --- Icones --- --- */
+
+/* --- --- Nav Bar --- --- */
+
+.home {
+  background-image: url("icons/home.svg");
+}
+
+.hamburguer {
+  background-image: url("icons/hamburguer.svg");
+}
+
+.file-text {
+  background-image: url("icons/file-text.svg");
+}
+
+.question {
+  background-image: url("icons/question.svg");
+}
+
+.users {
+  background-image: url("icons/users.svg");
+}
+
+.square-pencil {
+  background-image: url("icons/square-pencil.svg");
+}
+
+/* --- --- Status --- --- */
+
+.empty {
+  background-image: url("icons/square-dashed.svg");
+  background-size: 70%;
+}
+
+.check {
+  background-image: url("icons/check.svg");
+  background-color: var(--check-50);
+  border: var(--check) 1px solid;
+}
+
+.clock {
+  background-image: url("icons/clock.svg");
+  background-color: var(--clock-50);
+  border: var(--clock) 1px solid;
+}
+
+.off {
+  background-image: url("icons/off.svg");
+  background-color: var(--off-50);
+  border: var(--off) 1px solid;
+}
+
+.eye {
+  background-image: url("icons/eye.svg");
+  background-color: var(--eye-50);
+  border: var(--eye) 1px solid;
+}
+
+/* --- --- Variados --- --- */
+
+.teacher {
+  background-image: url("icons/teacher.svg");
+}
+
+.student {
+  background-image: url("icons/student.svg");
+}
+
+.moon {
+  background-image: url("icons/moon.svg");
+}
+
+.close {
+  background-image: url("icons/close.svg");
+}
+
+.close:hover {
+  background-color: var(--cor-border);
+  border-radius: 5px;
+}
+
+.closeW {
+  background-image: url("icons/closeW.svg");
+}
+
+.close:hover {
+  background-color: var(--cor-border);
+  border-radius: 5px;
+}
+
+.link-btn {
+  background-image: url("icons/link.svg");
+  background-size: 100%;
+  height: 18px;
+  width: 18px;
+}
+
+.pencil {
+  height: 25px;
+  width: 25px;
+  background-image: url("icons/pencil.svg");
+  background-size: 85%;
+}
+
+.user-plus {
+  background-image: url("icons/user-plus.svg");
+  background-color: var(--vermelho-hover);
+}
+
+.filter {
+  background-image: url("icons/filter.svg");
+  background-color: var(--vermelho-hover);
+}
+
+.filter-C {
+  background-image: url("icons/filter.svg");
+  background-color: var(--cinza-hover);
+}
+
+.file {
+  background-image: url("icons/file.svg");
+  background-size: 90%;
+  width: 100px;
+  height: 100px;
+}
+
+.logout {
+  background-image: url("icons/logout.svg");
+  background-size: 100%;
+  height: 20px;
+  width: 20px;
+}
+
+/* MAIN */
+
+.content {
+  width: 70%;
+  height: 100%;
+  padding-top: 32px;
+  padding-bottom: 64px;
+  gap: 32px;
+}
+
+.content.slim {
+  width: 50%;
+}
+
+.container {
+  border: var(--cor-border) 1px solid;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0px 2px 16px -12px #000;
+  min-width: 280px;
+  background-color: var(--background-color);
+}
+
+.information-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 8px;
+  border: solid 1px var(--cor-border);
+  border-radius: 5px;
+  background-color: #f7f7f7;
+  gap: 16px;
+}
+
+.information-container p {
+  font-size: 16px;
+  color: var(--cinza-paleta);
+  font-weight: 400;
+  line-height: 20px;
+}
+
+/* PROCURAR SE ALGUMA COISA USA ESSA CLASSE */
+
+.container-150 {
+  border: var(--cor-border) 1px solid;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0px 2px 16px -12px #000;
+  min-width: 150px;
+  background-color: #fff;
+}
+
+.grid-col {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  width: 100%;
+}
+
+/* PROCURAR SE ALGUMA COISA USA ESSA CLASSE */
+
+.grid-150 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 32px;
+  width: 100%;
+}
+
+.topV {
+  gap: 16px;
+  padding: 16px;
+  height: fit-content;
+  background-color: var(--vermelho);
+}
+
+.topC {
+  gap: 16px;
+  padding: 16px;
+  height: fit-content;
+  background-color: var(--cinza-paleta);
+}
+
+.TopTxt {
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.filter-inputs {
+  width: 100%;
+  gap: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  width: 100%;
+  height: 40px;
+  padding: 4px 12px;
+  border: var(--cor-border) 1px solid;
+  border-radius: 5px;
+
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--cinza);
+
+  transition: all 350ms ease;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+::placeholder {
+  color: var(--cinza-claro);
+}
+
+textarea {
+  min-width: 100%;
+  max-width: 100%;
+  width: 100%;
+  min-height: 100px;
+  padding: 8px;
+  border: solid 1px var(--cor-border);
+  border-radius: 5px;
+
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--cinza);
+  line-height: 1.4;
+  text-align: justify;
+  font-family: "FontePadrao";
+}
+
+select {
+  width: 100%;
+  height: 40px;
+  padding: 4px 12px;
+  border: var(--cor-border) 1px solid;
+  border-radius: 5px;
+
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--cinza);
+
+  background-color: #fff;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  transition: all 350ms ease;
+}
+
+/* --- --- POPUP --- --- */
+
+.hidden {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  padding: 24px;
+  background-color: rgba(0, 0, 0, 0.333);
+
+  backdrop-filter: blur(5px);
+  pointer-events: none;
+  opacity: 0;
+  transition: 500ms;
+}
+
+.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.popup {
+  width: 60%;
+  max-height: 85%;
+  overflow-y: auto;
+  border-radius: 5px;
+  box-shadow: 0px 2px 16px -12px #000;
+  transform: scale(0.5);
+  transition: 500ms;
+}
+
+.popup.slim {
+  width: 35%;
+}
+
+.active .popup {
+  transform: scale(1);
+}
+
+/* --- --- RESPONSIVIDADE --- --- */
+
+/* --- --- Telas grandes --- --- */
+
+@media (min-width: 1441px) {
+  .nav-left {
+    display: flex;
+  }
+
+  .nav-mobile {
+    display: none;
+  }
+
+  .hamburguer {
+    display: none;
+  }
+}
+
+/* --- --- Desktops médios --- --- */
+
+@media (min-width: 1281px) and (max-width: 1440px) {
+  .nav-left {
+    display: flex;
+  }
+
+  .nav-mobile {
+    display: none;
+  }
+
+  .hamburguer {
+    display: none;
+  }
+}
+
+/* --- --- Laptops --- --- */
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .nav-left {
+    display: flex;
+  }
+
+  .nav-mobile {
+    display: none;
+  }
+
+  .hamburguer {
+    display: none;
+  }
+
+  .content {
+    width: 80%;
+  }
+
+  .content.slim {
+    width: 60%;
+  }
+
+  .popup {
+    width: 70%;
+  }
+
+  .popup.slim {
+    width: 40%;
+  }
+}
+
+/* --- --- Tablets --- --- */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .nav-content {
+    width: 90%;
+  }
+
+  .nav-left {
+    display: none;
+  }
+
+  .nav-logo {
+    display: none;
+  }
+
+  .nav-mobile {
+    display: flex;
+  }
+
+  .hamburguer {
+    display: flex;
+  }
+
+  .content {
+    width: 85%;
+  }
+
+  .content.slim {
+    width: 70%;
+  }
+
+  .popup {
+    width: 75%;
+  }
+
+  .popup.slim {
+    width: 60%;
+  }
+}
+
+/* --- --- Celulares médios/grandes --- --- */
+
+@media (min-width: 481px) and (max-width: 767px) {
+  #perfil-info {
+    display: none;
+  }
+
+  .nav-content {
+    width: 90%;
+  }
+
+  .nav-left {
+    display: none !important;
+  }
+
+  .nav-logo {
+    display: none;
+  }
+
+  .nav-mobile {
+    display: flex;
+  }
+
+  .hamburguer {
+    display: flex;
+  }
+
+  .content {
+    width: 90%;
+  }
+
+  .content.slim {
+    width: 85%;
+  }
+
+  .popup {
+    width: 80%;
+  }
+
+  .popup.slim {
+    width: 70%;
+  }
+}
+
+/* --- --- Celulares pequenos --- --- */
+
+@media (max-width: 480px) {
+  #perfil-info {
+    display: none;
+  }
+
+  .nav-content {
+    width: 100%;
+  }
+
+  .nav-left {
+    display: none;
+  }
+
+  .nav-logo {
+    display: none;
+  }
+
+  .nav-mobile {
+    display: flex;
+  }
+
+  .hamburguer {
+    display: flex;
+  }
+
+  .content {
+    width: 95%;
+  }
+
+  .content.slim {
+    width: 95%;
+  }
+
+  .popup {
+    width: 85%;
+  }
+
+  .popup.slim {
+    width: 85%;
+  }
+}
+
+.visible {
+  display: flex !important;
+}
+
+.invisible {
+  display: none;
+}
+
+.admin-icon {
+  background-image: url("icons/banco.png");
+  /* background-color: var(--vermelho-hover); */
+}
+
+/* --- --- ACESSIBILIDADE --- --- */
+
+/* --- --- Menu Acessibilidade --- --- */
+
+.menu-acess {
+  position: absolute;
+  top: 48px;
+  right: 0;
+  background: var(--background-color);
+  border: 1px solid var(--cor-border);
+  border-radius: 5px;
+  box-shadow: 0px 4px 16px -8px #000;
+  display: none;
+  flex-direction: column;
+  min-width: 180px;
+  z-index: 2000;
+  overflow: hidden;
+}
+
+.menu-acess.visible {
+  display: flex;
+}
+
+.menu-acess button {
+  display: block;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--cor-border);
+  border-radius: 0;
+  color: var(--cinza);
+  padding: 10px 16px;
+  text-align: left;
+  font-size: 14px;
+  width: 100%;
+  height: auto;
+  transition: background 200ms;
+}
+
+.menu-acess button:last-child {
+  border-bottom: none;
+}
+
+.menu-acess button:hover {
+  background: var(--fundo);
+  cursor: pointer;
+}
+
+.menu-acess button.ativo {
+  font-weight: 700;
+  color: var(--vermelho);
+}
+
+.acessibilidade {
+  background-image: url("icons/olho.png");
+  background-color: transparent;
+  border: none;
+}
+
+/* Deuteranopia — dificuldade com verde/vermelho */
+[acessibilidade="deuteranopia"] {
+  --vermelho: #b5640a;
+  --vermelho-hover: #d4873a;
+  --vermelho-escuro: #8a4a00;
+  --check: #0077bb;
+  --check-50: #e0f0ff;
+  --off: #b5640a;
+  --off-50: #fff0e0;
+  --eye: #7a00bb;
+  --eye-50: #f5e0ff;
+  --clock: #555500;
+  --clock-50: #fffff0;
+}
+
+/* Protanopia — dificuldade com vermelho */
+[acessibilidade="protanopia"] {
+  --vermelho: #0066cc;
+  --vermelho-hover: #3388dd;
+  --vermelho-escuro: #004499;
+  --check: #0066cc;
+  --check-50: #e0f0ff;
+  --off: #cc6600;
+  --off-50: #fff0e0;
+  --eye: #6600cc;
+  --eye-50: #f0e0ff;
+  --clock: #cc9900;
+  --clock-50: #fffce0;
+}
+
+/* Tritanopia — dificuldade com azul/amarelo */
+[acessibilidade="tritanopia"] {
+  --vermelho: #cc0066;
+  --vermelho-hover: #e03388;
+  --vermelho-escuro: #990044;
+  --check: #00aa44;
+  --check-50: #e0fff0;
+  --off: #cc0066;
+  --off-50: #ffe0f0;
+  --eye: #cc0066;
+  --eye-50: #ffe0f0;
+  --clock: #ff6600;
+  --clock-50: #fff0e0;
+}
+
+/* Alto contraste */
+[acessibilidade="alto-contraste"] {
+  --vermelho: #ff0000;
+  --vermelho-hover: #cc0000;
+  --vermelho-escuro: #990000;
+  --cinza-paleta: #000000;
+  --cinza: #000000;
+  --cinza-claro: #444444;
+  --background-color: #ffffff;
+  --cor-border: #000000;
+  --fundo: #ffffff;
+  --check: #006600;
+  --check-50: #ccffcc;
+  --off: #cc0000;
+  --off-50: #ffcccc;
+  --eye: #000099;
+  --eye-50: #ccccff;
+  --clock: #996600;
+  --clock-50: #ffeecc;
+}

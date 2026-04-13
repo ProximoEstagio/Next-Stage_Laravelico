@@ -1,0 +1,22 @@
+.pagination {
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    justify-content: center;
+}
+
+.pagination button {
+    padding: 6px 12px;
+    border: none;
+    background: var(--cinza-claro);
+    border-radius: 6px;
+    cursor: pointer;
+    width: 44px;
+}
+
+.pagination button.active {
+    background: var(--cinza-paleta);
+    color: white;
+}

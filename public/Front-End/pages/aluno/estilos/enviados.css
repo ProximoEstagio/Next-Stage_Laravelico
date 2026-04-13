@@ -1,0 +1,67 @@
+.doc-destaque {
+  border-left: 3px solid var(--vermelho);
+}
+
+.option-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  user-select: none;
+}
+
+.option-wrapper input[type="checkbox"] {
+  display: none;
+}
+
+.custom-box {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--cinza);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s ease;
+}
+
+.custom-box .inner-box {
+  width: 12px;
+  height: 12px;
+  background-color: transparent;
+  border-radius: 2px;
+  transition: background-color 0.2s ease;
+}
+
+.option-wrapper input[type="checkbox"]:checked + .custom-box {
+  border-color: var(--eye);
+}
+
+.option-wrapper input[type="checkbox"]:checked + .custom-box .inner-box {
+  background-color: var(--eye);
+}
+
+.link {
+  background-size: 100%;
+  height: 18px;
+  width: 18px;
+}
+
+.information-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 16px;
+  border: solid 1px var(--cor-border);
+  border-radius: 5px;
+  background-color: #f7f7f7;
+  gap: 16px;
+}
+
+.information-container p {
+  font-size: 16px;
+  color: var(--cinza-paleta);
+  font-weight: 400;
+  line-height: 20px;
+}

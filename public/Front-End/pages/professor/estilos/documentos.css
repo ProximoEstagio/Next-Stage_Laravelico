@@ -1,0 +1,112 @@
+
+
+
+/* CHECK BOX */
+
+
+.option-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  user-select: none;
+}
+
+.option-wrapper input[type="checkbox"] {
+  display: none;
+}
+
+.custom-box {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--cinza);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s ease;
+}
+
+.custom-box .inner-box {
+  width: 12px;
+  height: 12px;
+  background-color: transparent;
+  border-radius: 2px;
+  transition: background-color 0.2s ease;
+}
+
+.option-wrapper input[type="checkbox"]:checked+.custom-box {
+  border-color: var(--eye);
+}
+
+.option-wrapper input[type="checkbox"]:checked+.custom-box .inner-box {
+  background-color: var(--eye);
+}
+
+
+
+
+
+/*  */
+
+.option-group {
+  height: fit-content;
+  padding: 4px 8px 4px 8px;
+  border-radius: 5px;
+  border: 1px solid var(--cor-border);
+}
+
+.mid {
+  gap: 4px;
+  height: fit-content;
+  margin-top: -4px;
+}
+
+/* Barra de progresso */
+
+.progBar {
+  background-color: var(--cinza-claro);
+  height: 8px;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progCheck {
+  width: 50%;
+  background: linear-gradient(to left, #26883c, #31b94f);
+  height: 8px;
+  border-radius: 2px;
+}
+
+.progOff {
+  width: 10%;
+  background: linear-gradient(to left, #cd060e, #ff0a12);
+  height: 8px;
+  border-radius: 2px;
+}
+
+.progEye {
+  width: 30%;
+  background: linear-gradient(to left, #0947d7, #346ef3);
+  height: 8px;
+  border-radius: 2px;
+}
+
+.progClock {
+  width: 10%;
+  background: linear-gradient(to left, #eba500, #fcca58);
+  height: 8px;
+  border-radius: 2px;
+}
+
+.quant {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 28px;
+  width: 10%;
+}
+
+.quant>p {
+  font-size: 28px;
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Próximo Estágio</title>
+    <link rel="stylesheet" href="../../public/global.css" />
+    <link rel="stylesheet" href="estilos/perfil.css" />
+    <link
+      rel="icon"
+      href="../../public/imagens/favicon.png"
+      type="image/x-icon"
+    />
+    <script src="../../public/script/config.js"></script>
+    <script src="../../public/script/api.js"></script>
+    <script src="../../public/script/requireLogin.js"></script>
+    <script src="scripts/nav.js" defer></script>
+    <script src="scripts/sino.js" defer></script>
+    <script src="scripts/popup.js" defer></script>
+    <script src="scripts/perfil.js" defer></script>
+    <script src="../../public/script/acessibilidade.js" defer></script>
+    <script src="../../public/script/script.js" defer></script>
+    <script src="../../public/script/logout.js" defer></script>
+  </head>
+  <body>
+    <nav></nav>
+
+    <div class="content slim cl">
+      <div class="container cl">
+        <div class="topC rw jc-sb al-fs">
+          <!-- Foto clicável -->
+          <div style="position: relative; width: 100px; height: 100px">
+            <img
+              id="foto-perfil"
+              src="../../public/imagens/ft-perfil.png"
+              alt="foto de perfil"
+              class="ft-perfil"
+            />
+            <input
+              type="file"
+              id="input-foto"
+              accept=".jpg,.jpeg,.png"
+              style="display: none"
+            />
+            <div
+              style="
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                background: var(--cinza-paleta);
+                border-radius: 50%;
+                width: 24px;
+                height: 24px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                pointer-events: none;
+              "
+            >
+              <span
+                class="icon pencil"
+                style="width: 18px; height: 18px; background-size: 80%"
+              ></span>
+            </div>
+          </div>
+          <div class="cl">
+            <p>Curso :</p>
+            <p id="curso"></p>
+          </div>
+          <button id="logout" class="btn-V fc">
+            <span class="icon logout"></span>
+            <p class="fs18">Sair</p>
+          </button>
+        </div>
+
+        <div class="info-perfil">
+          <p>Informações pessoais</p>
+          <div class="cl">
+            <p class="desc">Nome :</p>
+            <p id="nomeUser" class="fs18"></p>
+          </div>
+          <div class="cl">
+            <p class="desc">Email :</p>
+            <p id="emailUser" class="fs18"></p>
+          </div>
+          <div class="cl">
+            <p class="desc">Telefone :</p>
+            <p id="telefone" class="fs18"></p>
+          </div>
+          <button id="editPerfil" class="btn-C fc as-fe">
+            <span class="icon pencil"></span>
+            <p>Editar perfil</p>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="popup-layer" class="hidden"></div>
+  </body>
+</html>

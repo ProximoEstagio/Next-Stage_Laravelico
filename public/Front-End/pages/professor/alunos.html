@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Próximo Estágio</title>
+    <link rel="stylesheet" href="../../public/global.css" />
+    <link rel="stylesheet" href="estilos/lista.css" />
+    <link rel="stylesheet" href="estilos/alunos.css" />
+    <link
+      rel="icon"
+      href="../../public/imagens/favicon.png"
+      type="image/x-icon"
+    />
+
+    <script src="../../public/script/config.js"></script>
+    <script src="../../public/script/api.js"></script>
+    <script src="../../public/script/requireLogin.js"></script>
+    <script src="scripts/nav.js" defer></script>
+    <script src="scripts/popupCadastro.js" defer></script>
+    <script src="../../public/script/acessibilidade.js" defer></script>
+    <script src="../../public/script/script.js" defer></script>
+    <script src="scripts/listaAlunos.js" defer></script>
+    <script src="scripts/uploadPlanilha.js" defer></script>
+  </head>
+  <body>
+    <nav></nav>
+
+    <div class="content cl">
+      <div class="grid-col">
+        <!-- Adicionar Alunos -->
+        <div class="container cl">
+          <div class="topV rw g16">
+            <span class="icon user-plus"></span>
+            <p class="TopTxt">Adicionar Alunos</p>
+          </div>
+          <div class="cl p16 g16">
+            <p>
+              Suba um arquivo CSV com os dados dos alunos para criar as contas
+              automaticamente.
+            </p>
+            <div>
+              <p>Colunas obrigatórias no CSV :</p>
+              <p>- nome</p>
+              <p>- ra</p>
+              <p>- email</p>
+              <p>- semestre</p>
+            </div>
+            <div class="rw jc-sb g16">
+              <button
+                class="btn-V"
+                onclick="document.getElementById('fileinput').click()"
+              >
+                Subir Planilha CSV
+              </button>
+              <input type="file" id="fileinput" accept=".csv" />
+              <button id="open-popup" class="btn-C">
+                Cadastrar Manualmente
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filtrar Alunos -->
+        <div class="container cl">
+          <div class="topC rw g16">
+            <span class="icon filter-C"></span>
+            <p class="TopTxt">Filtro de Alunos</p>
+          </div>
+          <div class="cl p16 g16 jc-sb">
+            <div class="filter-inputs">
+              <input placeholder="Nome" type="text" />
+              <input placeholder="email" type="email" />
+              <input
+                placeholder="Semestre"
+                type="number"
+                min="1"
+                max="6"
+                step="1"
+              />
+            </div>
+            <button class="btn-C">Aplicar Filtros</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lista de Alunos -->
+      <div class="g16 cl">
+        <table class="container topC">
+          <colgroup>
+            <col class="col-1" />
+            <col class="col-2" />
+            <col class="col-3" />
+            <col class="col-4" />
+          </colgroup>
+          <thead>
+            <tr>
+              <th><p>Nome</p></th>
+              <th><p>R.A. do Aluno</p></th>
+              <th>
+                <div class="rw jc-sa">
+                  <p>A</p>
+                  <p>B</p>
+                  <p>C</p>
+                </div>
+              </th>
+              <th></th>
+            </tr>
+          </thead>
+        </table>
+
+        <div class="tabela-alunos">
+          <table>
+            <colgroup>
+              <col class="col-1" />
+              <col class="col-2" />
+              <col class="col-3" />
+              <col class="col-4" />
+            </colgroup>
+            <tbody id="listAlunos">
+              <tr>
+                <td colspan="4" style="text-align: center; padding: 32px">
+                  Carregando alunos...
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div id="pagination" class="pagination"></div>
+      </div>
+    </div>
+
+    <div id="popup-layer" class="hidden"></div>
+  </body>
+</html>

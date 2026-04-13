@@ -1,0 +1,16 @@
+body {
+    background-color: var(--cinza);
+    margin: 0;
+}
+
+.content {
+    min-height: 100vh;
+}
+
+.container {
+    border-radius: 10px;
+}
+
+a {
+  color: var(--vermelho);
+}

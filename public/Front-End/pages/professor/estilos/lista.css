@@ -1,0 +1,101 @@
+
+
+/* LISTA */
+
+/* Colunas */
+
+col.col-1 {
+  width: 30%;
+}
+
+col.col-2 {
+  width: 10%;
+}
+
+col.col-3 {
+  width: 25%;
+}
+
+col.col-4 {
+  width: 15%
+}
+
+col.col-5 {
+  width: 15%
+}
+
+col.col-6 {
+  width: 5%;
+}
+
+table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+
+/* Linha */
+
+tr {
+  border-bottom: 1px solid var(--cor-border);
+  background-color: var(--background-color);
+}
+
+tr:last-child {
+  border-bottom: none;
+}
+
+
+/* Sumário */
+
+th {
+  background-color: var(--cinza-paleta);
+  justify-content: space-around;
+  text-align: left;
+  padding: 16px;
+}
+
+th p {
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
+}
+
+
+/* Corpo */
+
+td {
+  background-color: var(--background-color);
+  padding: 8px 16px 8px 16px;
+  border: none;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--cinza);
+  line-height: 1.4;
+}
+
+td:last-child {
+  padding: 0;
+}
+
+td:hover {
+  cursor: pointer;
+}
+
+.container-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tabela-alunos {
+  border: 1px solid var(--cor-border);
+  border-radius: 5px;
+  min-width: 280px;
+  overflow: hidden;
+  box-shadow: 0px 2px 16px -12px #000;
+}

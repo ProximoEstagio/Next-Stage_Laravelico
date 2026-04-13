@@ -1,0 +1,21 @@
+.ft-perfil {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: #fff 1px solid;
+}
+
+.info-perfil {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+}
+
+.desc {
+  opacity: 60%;
+}
+
+.topC>.cl>p {
+  color: #fff;
+}

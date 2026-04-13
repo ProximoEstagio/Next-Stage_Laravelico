@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Próximo Estágio</title>
+    <link rel="stylesheet" href="../../public/global.css" />
+    <link rel="stylesheet" href="estilos/enviados.css" />
+    <link
+      rel="icon"
+      href="../../public/imagens/favicon.png"
+      type="image/x-icon"
+    />
+    <script src="../../public/script/config.js"></script>
+    <script src="../../public/script/api.js"></script>
+    <script src="../../public/script/requireLogin.js"></script>
+    <script src="scripts/nav.js" defer></script>
+    <script src="scripts/sino.js" defer></script>
+    <script src="scripts/popup.js" defer></script>
+    <script src="../../public/script/acessibilidade.js" defer></script>
+    <script src="../../public/script/script.js" defer></script>
+    <script src="scripts/enviados.js" defer></script>
+  </head>
+  <body>
+    <nav></nav>
+
+    <div class="content slim cl">
+      <!-- Faixa título -->
+      <div class="container topC">
+        <p class="TopTxt">Documentos Enviados</p>
+      </div>
+
+      <!-- Filtro -->
+      <div class="container cl">
+        <div class="topV rw g16">
+          <p class="TopTxt">Filtrar por Tipo</p>
+        </div>
+        <div class="rw p16 g16">
+          <label class="option-wrapper">
+            <input type="checkbox" id="filtro-A" value="A" checked />
+            <div class="custom-box"><div class="inner-box"></div></div>
+            <p>Tipo A</p>
+          </label>
+          <label class="option-wrapper">
+            <input type="checkbox" id="filtro-B" value="B" checked />
+            <div class="custom-box"><div class="inner-box"></div></div>
+            <p>Tipo B</p>
+          </label>
+          <label class="option-wrapper">
+            <input type="checkbox" id="filtro-C" value="C" checked />
+            <div class="custom-box"><div class="inner-box"></div></div>
+            <p>Tipo C</p>
+          </label>
+        </div>
+      </div>
+
+      <!-- Últimos enviados -->
+      <div class="container topC">
+        <p class="TopTxt">Últimos Enviados</p>
+      </div>
+      <div id="ultimos-container" class="cl g16">
+        <p style="padding: 16px">Carregando...</p>
+      </div>
+
+      <!-- Histórico -->
+      <div class="container topC" id="historico-header" style="display: none">
+        <p class="TopTxt">Histórico</p>
+      </div>
+      <div id="historico-container" class="cl g16"></div>
+    </div>
+
+    <div id="popup-layer" class="hidden"></div>
+  </body>
+</html>

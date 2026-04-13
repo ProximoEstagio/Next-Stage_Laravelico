@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Próximo Estágio — Admin</title>
+    <link rel="stylesheet" href="../../public/global.css" />
+    <link rel="stylesheet" href="estilos/lista.css" />
+    <link
+      rel="icon"
+      href="../../public/imagens/favicon.png"
+      type="image/x-icon"
+    />
+    <script src="../../public/script/config.js"></script>
+    <script src="../../public/script/api.js"></script>
+    <script src="../../public/script/requireLogin.js"></script>
+    <script src="scripts/nav.js" defer></script>
+    <script src="../../public/script/acessibilidade.js" defer></script>
+    <script src="../../public/script/script.js" defer></script>
+    <script src="scripts/admin.js" defer></script>
+  </head>
+  <body>
+    <nav></nav>
+
+    <div class="content cl">
+      <!-- Tipos de Documento -->
+      <div class="container cl">
+        <div class="topV rw g16">
+          <span class="icon square-pencil"></span>
+          <p class="TopTxt">Tipos de Documento</p>
+        </div>
+        <div class="cl p16 g16">
+          <p>
+            Gerencie os tipos de documento exigidos. Desativar um tipo não apaga
+            o histórico dos alunos.
+          </p>
+          <div id="lista-tipos" class="cl g8"></div>
+          <div class="rw g16">
+            <input
+              id="input-novo-tipo"
+              placeholder="Nome do novo tipo (ex: D)"
+              type="text"
+            />
+            <button id="btn-criar-tipo" class="btn-V fc">Adicionar Tipo</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cursos -->
+      <div class="container cl">
+        <div class="topC rw g16">
+          <p class="TopTxt">Cursos</p>
+        </div>
+        <div class="cl p16 g16">
+          <div id="lista-cursos" class="cl g8">
+            <p>Carregando...</p>
+          </div>
+          <button id="btn-novo-curso" class="btn-V">Criar Novo Curso</button>
+        </div>
+      </div>
+
+      <!-- Professores -->
+      <div class="container cl">
+        <div class="topC rw g16">
+          <p class="TopTxt">Professores</p>
+        </div>
+        <div class="cl p16 g16">
+          <div id="lista-professores" class="cl g8">
+            <p>Carregando...</p>
+          </div>
+          <button id="btn-novo-professor" class="btn-C">
+            Cadastrar Novo Professor
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="popup-layer" class="hidden"></div>
+  </body>
+</html>

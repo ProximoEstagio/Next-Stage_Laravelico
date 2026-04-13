@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Próximo Estágio</title>
+    <link rel="stylesheet" href="../../public/global.css" />
+    <link rel="stylesheet" href="estilos/area_aluno.css" />
+    <link
+      rel="icon"
+      href="../../public/imagens/favicon.png"
+      type="image/x-icon"
+    />
+    <script src="../../public/script/config.js"></script>
+    <script src="../../public/script/api.js"></script>
+    <script src="scripts/nav.js" defer></script>
+    <script src="scripts/popup.js" defer></script>
+    <script src="scripts/uploadDoc.js" defer></script>
+    <script src="scripts/progresso.js" defer></script>
+    <script src="../../public/script/dropdown.js" defer></script>
+    <script src="../../public/script/acessibilidade.js" defer></script>
+    <script src="../../public/script/script.js" defer></script>
+    <script src="../../public/script/requireLogin.js"></script>
+    <script src="scripts/modelo.js" defer></script>
+  </head>
+  <body>
+    <nav></nav>
+
+    <div class="content cl">
+      <!-- Barra de Progresso -->
+      <div class="container p16 cl g8">
+        <p class="fs16"><b>Progresso de Entrega</b></p>
+        <div class="rw g4" id="barra-progresso">
+          <!-- A -->
+          <div id="circle-A" class="circle"><p>A</p></div>
+          <div id="prog-A" class="progBar">
+            <div class="progProgres" style="width: 0%"></div>
+          </div>
+          <!-- B -->
+          <div id="circle-B" class="circle"><p>B</p></div>
+          <div id="prog-B" class="progBar">
+            <div class="progProgres" style="width: 0%"></div>
+          </div>
+          <!-- C -->
+          <div id="circle-C" class="circle"><p>C</p></div>
+        </div>
+      </div>
+
+      <!-- Grid envio -->
+      <div class="grid-col">
+        <div class="container cl">
+          <div class="topV">
+            <input id="nomeDoc" placeholder="Nome do Documento" type="text" />
+          </div>
+          <div class="cl p16 g16 jc-sb">
+            <div class="cl g16">
+              <select id="tipoDoc">
+                <option value="">Selecione o tipo de documento</option>
+              </select>
+              <div>
+                <p>Recado para este Documento</p>
+                <textarea name="Recado" id="Recado"></textarea>
+              </div>
+            </div>
+            <div class="rw g16">
+              <p
+                id="nomeArquivoText"
+                class="fs14"
+                style="margin-bottom: 4px"
+              ></p>
+              <button
+                class="btn-F"
+                type="button"
+                onclick="document.getElementById('fileinput').click()"
+              >
+                Anexar
+              </button>
+              <input type="file" id="fileinput" style="display: none" />
+              <button class="btn-C" type="button">Enviar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Último documento enviado -->
+        <div class="container cl" id="ultimo-doc-container">
+          <div class="topC">
+            <p class="TopTxt">Último Documento Enviado</p>
+          </div>
+          <div id="ultimo-doc-content" class="cl p16 cc g8">
+            <p class="fs16"><b>Você ainda não enviou nenhum Documento</b></p>
+            <p>Eles aparecerão aqui assim que você enviar um</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Faixa -->
+      <div class="container topC">
+        <p class="TopTxt">
+          Siga as instruções para garantir que seus documentos sejam preenchidos
+          de maneira correta e completa, atente-se as orientações fornecidas
+          pelos Modelos.
+        </p>
+      </div>
+
+      <!-- Grid modelos -->
+      <div class="grid-col">
+        <div class="container cl p16 g32">
+          <div class="cl g8">
+            <p class="fs16"><b>Modelo do Documento A</b></p>
+            <p><b>Instruções :</b></p>
+            <p id="desc-modelo-A">
+              Esse termo deve conter dados do aluno, da empresa, do supervisor
+              direto e a data de início das atividades.
+            </p>
+          </div>
+          <button id="link-modelo-A" class="btn-V">Baixar Modelo</button>
+        </div>
+
+        <div class="container cl p16 g32">
+          <div class="cl g8">
+            <p class="fs16"><b>Modelo do Documento B</b></p>
+            <p><b>Instruções :</b></p>
+            <p id="desc-modelo-B">
+              O aluno descreve as atividades realizadas e as relaciona com o
+              conteúdo do curso.
+            </p>
+          </div>
+          <button id="link-modelo-B" class="btn-V">Baixar Modelo</button>
+        </div>
+
+        <div class="container cl p16 g32">
+          <div class="cl g8">
+            <p class="fs16"><b>Modelo do Documento C</b></p>
+            <p><b>Instruções :</b></p>
+            <p id="desc-modelo-C">
+              Declaração de Atividades, que formaliza o encerramento das
+              atividades desenvolvidas durante o período.
+            </p>
+          </div>
+          <button id="link-modelo-C" class="btn-V">Baixar Modelo</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="popup-layer" class="hidden"></div>
+  </body>
+</html>

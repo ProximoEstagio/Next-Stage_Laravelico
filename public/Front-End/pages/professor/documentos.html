@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Próximo Estágio</title>
+    <link rel="stylesheet" href="../../public/global.css" />
+    <link rel="stylesheet" href="estilos/lista.css" />
+    <link rel="stylesheet" href="estilos/documentos.css" />
+    <link
+      rel="icon"
+      href="../../public/imagens/favicon.png"
+      type="image/x-icon"
+    />
+
+    <script src="../../public/script/config.js"></script>
+    <script src="../../public/script/api.js"></script>
+    <script src="../../public/script/requireLogin.js"></script>
+    <script src="scripts/nav.js" defer></script>
+    <script src="../../public/script/acessibilidade.js" defer></script>
+    <script src="../../public/script/script.js" defer></script>
+    <script src="scripts/popupDocumento.js" defer></script>
+    <script src="scripts/documentos.js" defer></script>
+  </head>
+
+  <body>
+    <nav></nav>
+
+    <div class="content cl">
+      <div class="grid-col">
+        <!-- Filtrar Documentos -->
+        <div class="container cl">
+          <div class="topV rw g16">
+            <span class="icon filter"></span>
+            <p class="TopTxt">Filtrar Documentos</p>
+          </div>
+          <div class="rw p16">
+            <div class="cl g8">
+              <p class="fs18">Status :</p>
+              <label class="option-wrapper">
+                <input type="checkbox" id="VA" />
+                <div class="custom-box"><div class="inner-box"></div></div>
+                <p>Validado</p>
+              </label>
+              <label class="option-wrapper">
+                <input type="checkbox" id="IN" />
+                <div class="custom-box"><div class="inner-box"></div></div>
+                <p>Invalidado</p>
+              </label>
+              <label class="option-wrapper">
+                <input type="checkbox" id="VI" />
+                <div class="custom-box"><div class="inner-box"></div></div>
+                <p>Visualizado</p>
+              </label>
+              <label class="option-wrapper">
+                <input type="checkbox" id="NA" />
+                <div class="custom-box"><div class="inner-box"></div></div>
+                <p>Não Avaliado</p>
+              </label>
+            </div>
+            <div class="cl g8">
+              <p class="fs18">Tipo :</p>
+              <label class="option-wrapper">
+                <input type="checkbox" id="A" />
+                <div class="custom-box"><div class="inner-box"></div></div>
+                <p>A</p>
+              </label>
+              <label class="option-wrapper">
+                <input type="checkbox" id="B" />
+                <div class="custom-box"><div class="inner-box"></div></div>
+                <p>B</p>
+              </label>
+              <label class="option-wrapper">
+                <input type="checkbox" id="C" />
+                <div class="custom-box"><div class="inner-box"></div></div>
+                <p>C</p>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dashboard -->
+        <div class="container cl">
+          <div class="cl p8 g16 jc-sb">
+            <div class="option-group rw g8">
+              <span class="icon-list check"></span>
+              <div class="mid cl">
+                <p>Validado</p>
+                <div class="progBar rw">
+                  <div
+                    id="prog-check"
+                    class="progCheck"
+                    style="width: 0%"
+                  ></div>
+                </div>
+              </div>
+              <div class="quant"><p id="quant-check">0</p></div>
+            </div>
+
+            <div class="option-group rw g8">
+              <span class="icon-list off"></span>
+              <div class="mid cl">
+                <p>Invalidado</p>
+                <div class="progBar rw">
+                  <div id="prog-off" class="progOff" style="width: 0%"></div>
+                </div>
+              </div>
+              <div class="quant"><p id="quant-off">0</p></div>
+            </div>
+
+            <div class="option-group rw g8">
+              <span class="icon-list eye"></span>
+              <div class="mid cl">
+                <p>Visualizado</p>
+                <div class="progBar rw">
+                  <div id="prog-eye" class="progEye" style="width: 0%"></div>
+                </div>
+              </div>
+              <div class="quant"><p id="quant-eye">0</p></div>
+            </div>
+
+            <div class="option-group rw g8">
+              <span class="icon-list clock"></span>
+              <div class="mid cl">
+                <p>Não Avaliado</p>
+                <div class="progBar rw">
+                  <div
+                    id="prog-clock"
+                    class="progClock"
+                    style="width: 0%"
+                  ></div>
+                </div>
+              </div>
+              <div class="quant"><p id="quant-clock">0</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lista de documentos -->
+      <div class="g16 cl">
+        <table class="container topC">
+          <colgroup>
+            <col class="col-1" />
+            <col class="col-2" />
+            <col class="col-3" />
+            <col class="col-4" />
+            <col class="col-5" />
+            <col class="col-6" />
+          </colgroup>
+          <thead>
+            <tr>
+              <th><p>Nome do Documento</p></th>
+              <th><p>Tipo</p></th>
+              <th><p>Nome do Aluno</p></th>
+              <th><p>R.A. do Aluno</p></th>
+              <th><p>Status</p></th>
+              <th></th>
+            </tr>
+          </thead>
+        </table>
+
+        <div class="tabela-alunos">
+          <table>
+            <colgroup>
+              <col class="col-1" />
+              <col class="col-2" />
+              <col class="col-3" />
+              <col class="col-4" />
+              <col class="col-5" />
+              <col class="col-6" />
+            </colgroup>
+            <tbody>
+              <tr>
+                <td colspan="6" style="text-align: center; padding: 32px">
+                  Carregando documentos...
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div id="popup-layer" class="hidden"></div>
+  </body>
+</html>

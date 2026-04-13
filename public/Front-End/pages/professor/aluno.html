@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Próximo Estágio</title>
+    <link rel="stylesheet" href="../../public/global.css" />
+    <link rel="stylesheet" href="estilos/aluno.css" />
+    <link
+      rel="icon"
+      href="../../public/imagens/favicon.png"
+      type="image/x-icon"
+    />
+    <script src="../../public/script/config.js"></script>
+    <script src="../../public/script/api.js"></script>
+    <script src="../../public/script/requireLogin.js"></script>
+    <script src="scripts/nav.js" defer></script>
+    <script src="../../public/script/acessibilidade.js" defer></script>
+    <script src="../../public/script/script.js" defer></script>
+    <script src="scripts/alunoDetalhe.js" defer></script>
+  </head>
+  <body>
+    <nav></nav>
+
+    <div class="content cl">
+      <!-- Perfil Aluno -->
+      <div class="container rw">
+        <div class="topC p32">
+          <img
+            id="foto-aluno"
+            src="../../public/imagens/ft-perfil.png"
+            alt="foto do aluno"
+            class="foto-aluno"
+          />
+        </div>
+        <div class="cl p16 g8">
+          <p>Informações do Aluno</p>
+          <div class="rw jc-sb">
+            <p>Nome :</p>
+            <p id="aluno-nome">-</p>
+          </div>
+          <div class="rw jc-sb">
+            <p>R.A. :</p>
+            <p id="aluno-ra">-</p>
+          </div>
+          <div class="rw jc-sb">
+            <p>Email :</p>
+            <p id="aluno-email">-</p>
+          </div>
+          <div class="rw jc-sb">
+            <p>Curso :</p>
+            <p id="aluno-curso">-</p>
+          </div>
+          <div class="rw jc-sb">
+            <p>Telefone :</p>
+            <p id="aluno-telefone">-</p>
+          </div>
+          <div class="rw jc-sb">
+            <p>Semestre :</p>
+            <p id="aluno-semestre">-</p>
+          </div>
+          <button id="btn-concluir" class="btn-V fc">
+            Marcar como Concluído
+          </button>
+        </div>
+      </div>
+      <!-- Após o perfil do aluno e antes dos documentos -->
+      <div class="container cl">
+        <div class="topV rw g16">
+          <p class="TopTxt">Prazos de Entrega</p>
+        </div>
+        <div id="prazos-container" class="cl p16 g16">
+          <p>Carregando prazos...</p>
+        </div>
+      </div>
+      <!-- Documentos -->
+      <div id="documentos-container" class="cl g16">
+        <div class="container cl p16 cc">
+          <p>Carregando documentos...</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

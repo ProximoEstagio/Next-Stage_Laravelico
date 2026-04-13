@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Próximo Estágio</title>
+    <link rel="stylesheet" href="../../public/global.css" />
+    <link rel="stylesheet" href="estilos/modelos.css" />
+    <link
+      rel="icon"
+      href="../../public/imagens/favicon.png"
+      type="image/x-icon"
+    />
+
+    <script src="../../public/script/config.js"></script>
+    <script src="../../public/script/api.js"></script>
+    <script src="../../public/script/requireLogin.js"></script>
+    <script src="scripts/nav.js" defer></script>
+    <script src="../../public/script/acessibilidade.js" defer></script>
+    <script src="../../public/script/script.js" defer></script>
+    <script src="scripts/popupModelo.js" defer></script>
+    <script src="scripts/modelo.js" defer></script>
+  </head>
+  <body>
+    <nav></nav>
+
+    <div class="content cl">
+      <div class="container topC">
+        <p class="TopTxt">
+          Elabore os modelos dos documentos necessários para a sua disciplina de
+          estágio e disponibilize-os aqui para que os alunos possam acessá-los
+        </p>
+      </div>
+
+      <div class="grid-col">
+        <!-- Modelo A -->
+        <div class="container cl p16 g32">
+          <div class="cl g8">
+            <p class="fs16"><b>Modelo do Documento A</b></p>
+            <div class="rw jc-sb">
+              <a
+                id="link-modelo-A"
+                href="#"
+                style="
+                  color: var(--cinza);
+                  text-decoration: underline;
+                  display: none;
+                "
+              >
+                Visualizar modelo atual
+              </a>
+            </div>
+            <p><b>Instruções :</b></p>
+            <p id="desc-modelo-A">
+              Esse termo deve conter dados do aluno, da empresa, do supervisor
+              direto e a data de início das atividades. Ele deve ser assinado
+              por um profissional que ocupe um cargo hierarquicamente superior
+              ao do aluno.
+            </p>
+          </div>
+          <button data-open-popup="modelo" class="btn-V" data-tipo="A">
+            Novo Modelo
+          </button>
+        </div>
+
+        <!-- Modelo B -->
+        <div class="container cl p16 g32">
+          <div class="cl g8">
+            <p class="fs16"><b>Modelo do Documento B</b></p>
+            <div class="rw jc-sb">
+              <a
+                id="link-modelo-B"
+                href="#"
+                style="
+                  color: var(--cinza);
+                  text-decoration: underline;
+                  display: none;
+                "
+              >
+                Visualizar modelo atual
+              </a>
+            </div>
+            <p><b>Instruções :</b></p>
+            <p id="desc-modelo-B">
+              O aluno descreve as atividades realizadas e as relaciona com o
+              conteúdo do curso. Esse relatório é assinado apenas pelo aluno.
+            </p>
+          </div>
+          <button data-open-popup="modelo" class="btn-V" data-tipo="B">
+            Novo Modelo
+          </button>
+        </div>
+
+        <!-- Modelo C -->
+        <div class="container cl p16 g32">
+          <div class="cl g8">
+            <p class="fs16"><b>Modelo do Documento C</b></p>
+            <div class="rw jc-sb">
+              <a
+                id="link-modelo-C"
+                href="#"
+                style="
+                  color: var(--cinza);
+                  text-decoration: underline;
+                  display: none;
+                "
+              >
+                Visualizar modelo atual
+              </a>
+            </div>
+            <p><b>Instruções :</b></p>
+            <p id="desc-modelo-C">
+              Declaração de Atividades, que formaliza o encerramento das
+              atividades desenvolvidas durante o período.
+            </p>
+          </div>
+          <button data-open-popup="modelo" class="btn-V" data-tipo="C">
+            Novo Modelo
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="popup-layer" class="hidden"></div>
+  </body>
+</html>

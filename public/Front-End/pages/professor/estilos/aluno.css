@@ -1,0 +1,36 @@
+.content {
+  width: 50%;
+}
+
+.topC {
+  height: 190px;
+}
+
+.foto-aluno {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: #fff 1px solid;
+}
+
+
+
+
+
+.feedback {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 16px;
+  border: solid 1px var(--cor-border);
+  border-radius: 5px;
+  background-color: #f7f7f7;
+  gap: 16px;
+}
+
+.feedback p {
+  font-size: 16px;
+  color: var(--cinza-paleta);
+  font-weight: 400;
+  line-height: 20px;
+}
