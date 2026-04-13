@@ -4,6 +4,25 @@ Sistema de Gestão de Estágio Supervisionado para a Fatec Franco da Rocha.
 
 ---
 
+## Pré-requisitos
+
+### 1. PHP 8.4
+- Baixa em https://windows.php.net/download/ → VS17 x64 Thread Safe
+- Extrai para `C:\php\`
+- Adiciona `C:\php\` nas variáveis de ambiente do Windows (PATH)
+- Verifica: `php --version`
+
+### 2. Composer
+- Baixa o instalador em https://getcomposer.org/download/
+- Durante a instalação aponta para `C:\php\php.exe`
+- Verifica: `composer --version`
+
+### 3. MySQL
+- Pode usar o XAMPP (só o MySQL) ou instalar o MySQL separado
+- Cria um banco vazio chamado `proximo_estagio`
+
+---
+
 ## Instalação
 
 ```bash
@@ -16,7 +35,12 @@ cp .env.example .env
 # 3. Gerar chave da aplicação
 php artisan key:generate
 
-# 4. Configurar o .env com seus dados do banco MySQL
+# 4. Configurar o .env com os dados do banco
+# DB_HOST=127.0.0.1
+# DB_PORT=3306
+# DB_DATABASE=proximo_estagio
+# DB_USERNAME=root
+# DB_PASSWORD=
 
 # 5. Rodar migrations + seeds
 php artisan migrate --seed
@@ -24,11 +48,27 @@ php artisan migrate --seed
 # 6. Criar link simbólico para uploads
 php artisan storage:link
 
-# 7. Iniciar o servidor
+# 7. Cachear configurações (melhora a performance)
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+
+# 8. Iniciar o servidor
 php artisan serve
 ```
 
-A API estará disponível em: `http://localhost:8000/api`
+Acessa: `http://127.0.0.1:8000/Front-End/index.html`
+
+---
+
+## Credenciais padrão (seed)
+
+| Tipo       | Email                | Senha    |
+|------------|----------------------|----------|
+| Admin      | admin@admin.com      | admin    |
+| Professor  | professor@gmail.com  | 123456   |
+| Aluno      | teste@gmail.com      | teste123 |
+| Secretaria | secretaria@teste.com | 123456   |
 
 ---
 
@@ -71,7 +111,7 @@ app/
 ## Mapeamento: PHP original → Laravel
 
 | PHP original                            | Rota Laravel                            | Método                       |
-| --------------------------------------- | --------------------------------------- | ---------------------------- |
+|-----------------------------------------|-----------------------------------------|------------------------------|
 | `confirmLogin.php`                      | `POST /api/login`                       | público                      |
 | `logout.php`                            | `POST /api/logout`                      | público                      |
 | `verificarToken.php`                    | `POST /api/verificar-token`             | público                      |
@@ -92,7 +132,7 @@ app/
 | `professor/listarModelos.php`           | `GET /api/professor/modelos`            | auth.token:professor         |
 | `professor/uploadModelo.php`            | `POST /api/professor/modelos/upload`    | auth.token:professor         |
 | `professor/baixarModelo.php`            | `GET /api/professor/modelos/baixar`     | auth.token:professor         |
-| `admin/gerenciarTipos.php`              | `GET\|POST /api/admin/tipos`            | auth.token:professor + admin |
+| `admin/gerenciarTipos.php`              | `GET/POST /api/admin/tipos`             | auth.token:professor + admin |
 | `admin/listarCursos.php`                | `GET /api/admin/cursos`                 | auth.token:professor + admin |
 | `admin/criarCurso.php`                  | `POST /api/admin/cursos`                | auth.token:professor + admin |
 | `admin/atualizarCurso.php`              | `POST /api/admin/cursos/atualizar`      | auth.token:professor + admin |
@@ -102,62 +142,16 @@ app/
 
 ---
 
-## Atualização do Front-End
-
-Substituir as URLs no `config.js`. Ao invés de apontar para `/back-end/pages/...`, apontar para `/api/...`.
-
-### Exemplo: config.js atualizado
-
-```javascript
-(function () {
-  // URL base da API Laravel
-  window.API = "http://localhost:8000/api";
-  // Mantém BASE para assets estáticos (imagens, uploads)
-  window.BASE = "http://localhost:8000";
-})();
-```
-
-### Exemplo: fetch atualizado (login)
-
-```javascript
-// ANTES (PHP)
-fetch(BASE + '/back-end/confirmLogin.php', { ... })
-
-// DEPOIS (Laravel)
-fetch(API + '/login', { ... })
-```
-
-### Autenticação nas requisições
-
-Após o login, enviar o token em todas as requisições protegidas:
-
-```javascript
-fetch(API + "/aluno/documentos", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-    Authorization: "Bearer " + localStorage.getItem("token"),
-    "X-Tipo-Usuario": localStorage.getItem("tipoUsuario"),
-  },
-  body: JSON.stringify({ aluno_id: alunoId }),
-});
-```
-
----
-
-## Usuários padrão (seed)
-
-| Tipo       | Email                | Senha    |
-| ---------- | -------------------- | -------- |
-| Admin      | admin@admin.com      | admin    |
-| Professor  | professor@gmail.com  | 123456   |
-| Aluno      | teste@gmail.com      | teste123 |
-| Secretaria | secretaria@teste.com | 123456   |
-
----
-
 ## Uploads
 
-Os arquivos ficam em `storage/app/public/uploads/`.  
-Após `php artisan storage:link`, ficam acessíveis em:  
+Os arquivos ficam em `storage/app/public/uploads/`.
+Após `php artisan storage:link`, ficam acessíveis em:
 `http://localhost:8000/storage/uploads/aluno_1/arquivo.pdf`
+
+---
+
+## Observações
+
+- Senhas dos alunos cadastrados via CSV têm como padrão o próprio RA do aluno
+- O cache melhora muito a performance — rode sempre após alterações nas configurações ou rotas
+- Para limpar o cache: `php artisan optimize:clear`
