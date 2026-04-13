@@ -70,35 +70,35 @@ app/
 
 ## Mapeamento: PHP original → Laravel
 
-| PHP original | Rota Laravel | Método |
-|---|---|---|
-| `confirmLogin.php` | `POST /api/login` | público |
-| `logout.php` | `POST /api/logout` | público |
-| `verificarToken.php` | `POST /api/verificar-token` | público |
-| `infoPerfil.php` | `POST /api/perfil` | auth.token |
-| `uploadFoto.php` | `POST /api/upload-foto` | auth.token |
-| `aluno/getTipos.php` | `GET /api/aluno/tipos` | auth.token:aluno |
-| `aluno/listarDocumentosAluno.php` | `POST /api/aluno/documentos` | auth.token:aluno |
-| `aluno/createdoc.php` | `POST /api/aluno/criar-documento` | auth.token:aluno |
-| `professor/listarAluno.php` | `GET /api/professor/alunos` | auth.token:professor |
-| `professor/listarAlunoDetalhe.php` | `POST /api/professor/aluno/detalhe` | auth.token:professor |
-| `professor/createAluno.php` | `POST /api/professor/aluno/criar` | auth.token:professor |
-| `professor/cadastrarAlunos.php` | `POST /api/professor/alunos/csv` | auth.token:professor |
-| `professor/concluirAluno.php` | `POST /api/professor/aluno/concluir` | auth.token:professor |
-| `professor/listarDocumentos.php` | `POST /api/professor/documentos` | auth.token:professor |
-| `professor/atualizarStatus.php` | `POST /api/professor/status` | auth.token:professor |
-| `professor/gerenciarPrazos.php` (GET) | `GET /api/professor/prazos` | auth.token:professor |
-| `professor/gerenciarPrazos.php` (POST) | `POST /api/professor/prazos` | auth.token:professor |
-| `professor/listarModelos.php` | `GET /api/professor/modelos` | auth.token:professor |
-| `professor/uploadModelo.php` | `POST /api/professor/modelos/upload` | auth.token:professor |
-| `professor/baixarModelo.php` | `GET /api/professor/modelos/baixar` | auth.token:professor |
-| `admin/gerenciarTipos.php` | `GET\|POST /api/admin/tipos` | auth.token:professor + admin |
-| `admin/listarCursos.php` | `GET /api/admin/cursos` | auth.token:professor + admin |
-| `admin/criarCurso.php` | `POST /api/admin/cursos` | auth.token:professor + admin |
-| `admin/atualizarCurso.php` | `POST /api/admin/cursos/atualizar` | auth.token:professor + admin |
-| `admin/listarProfessores.php` | `GET /api/admin/professores` | auth.token:professor + admin |
-| `admin/createProfessor.php` | `POST /api/admin/professores` | auth.token:professor + admin |
-| `secretaria/listarAlunosConcluidos.php` | `GET /api/secretaria/alunos-concluidos` | auth.token:secretaria |
+| PHP original                            | Rota Laravel                            | Método                       |
+| --------------------------------------- | --------------------------------------- | ---------------------------- |
+| `confirmLogin.php`                      | `POST /api/login`                       | público                      |
+| `logout.php`                            | `POST /api/logout`                      | público                      |
+| `verificarToken.php`                    | `POST /api/verificar-token`             | público                      |
+| `infoPerfil.php`                        | `POST /api/perfil`                      | auth.token                   |
+| `uploadFoto.php`                        | `POST /api/upload-foto`                 | auth.token                   |
+| `aluno/getTipos.php`                    | `GET /api/aluno/tipos`                  | auth.token:aluno             |
+| `aluno/listarDocumentosAluno.php`       | `POST /api/aluno/documentos`            | auth.token:aluno             |
+| `aluno/createdoc.php`                   | `POST /api/aluno/criar-documento`       | auth.token:aluno             |
+| `professor/listarAluno.php`             | `GET /api/professor/alunos`             | auth.token:professor         |
+| `professor/listarAlunoDetalhe.php`      | `POST /api/professor/aluno/detalhe`     | auth.token:professor         |
+| `professor/createAluno.php`             | `POST /api/professor/aluno/criar`       | auth.token:professor         |
+| `professor/cadastrarAlunos.php`         | `POST /api/professor/alunos/csv`        | auth.token:professor         |
+| `professor/concluirAluno.php`           | `POST /api/professor/aluno/concluir`    | auth.token:professor         |
+| `professor/listarDocumentos.php`        | `POST /api/professor/documentos`        | auth.token:professor         |
+| `professor/atualizarStatus.php`         | `POST /api/professor/status`            | auth.token:professor         |
+| `professor/gerenciarPrazos.php` (GET)   | `GET /api/professor/prazos`             | auth.token:professor         |
+| `professor/gerenciarPrazos.php` (POST)  | `POST /api/professor/prazos`            | auth.token:professor         |
+| `professor/listarModelos.php`           | `GET /api/professor/modelos`            | auth.token:professor         |
+| `professor/uploadModelo.php`            | `POST /api/professor/modelos/upload`    | auth.token:professor         |
+| `professor/baixarModelo.php`            | `GET /api/professor/modelos/baixar`     | auth.token:professor         |
+| `admin/gerenciarTipos.php`              | `GET\|POST /api/admin/tipos`            | auth.token:professor + admin |
+| `admin/listarCursos.php`                | `GET /api/admin/cursos`                 | auth.token:professor + admin |
+| `admin/criarCurso.php`                  | `POST /api/admin/cursos`                | auth.token:professor + admin |
+| `admin/atualizarCurso.php`              | `POST /api/admin/cursos/atualizar`      | auth.token:professor + admin |
+| `admin/listarProfessores.php`           | `GET /api/admin/professores`            | auth.token:professor + admin |
+| `admin/createProfessor.php`             | `POST /api/admin/professores`           | auth.token:professor + admin |
+| `secretaria/listarAlunosConcluidos.php` | `GET /api/secretaria/alunos-concluidos` | auth.token:secretaria        |
 
 ---
 
@@ -111,9 +111,9 @@ Substituir as URLs no `config.js`. Ao invés de apontar para `/back-end/pages/..
 ```javascript
 (function () {
   // URL base da API Laravel
-  window.API = 'http://localhost:8000/api';
+  window.API = "http://localhost:8000/api";
   // Mantém BASE para assets estáticos (imagens, uploads)
-  window.BASE = 'http://localhost:8000';
+  window.BASE = "http://localhost:8000";
 })();
 ```
 
@@ -132,27 +132,27 @@ fetch(API + '/login', { ... })
 Após o login, enviar o token em todas as requisições protegidas:
 
 ```javascript
-fetch(API + '/aluno/documentos', {
-  method: 'POST',
+fetch(API + "/aluno/documentos", {
+  method: "POST",
   headers: {
-    'Content-Type': 'application/json',
-    'Authorization': 'Bearer ' + localStorage.getItem('token'),
-    'X-Tipo-Usuario': localStorage.getItem('tipoUsuario'),
+    "Content-Type": "application/json",
+    Authorization: "Bearer " + localStorage.getItem("token"),
+    "X-Tipo-Usuario": localStorage.getItem("tipoUsuario"),
   },
   body: JSON.stringify({ aluno_id: alunoId }),
-})
+});
 ```
 
 ---
 
 ## Usuários padrão (seed)
 
-| Tipo | Email | Senha |
-|---|---|---|
-| Admin | admin@admin.com | admin |
-| Professor | professor@gmail.com | 123456 |
-| Aluno | teste@gmail.com | teste123 |
-| Secretaria | secretaria@teste.com | 123456 |
+| Tipo       | Email                | Senha    |
+| ---------- | -------------------- | -------- |
+| Admin      | admin@admin.com      | admin    |
+| Professor  | professor@gmail.com  | 123456   |
+| Aluno      | teste@gmail.com      | teste123 |
+| Secretaria | secretaria@teste.com | 123456   |
 
 ---
 
