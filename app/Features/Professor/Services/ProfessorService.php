@@ -123,6 +123,7 @@ class ProfessorService
             })
             ->leftJoin('status as s', 's.cod_status', '=', 'v.status_cod_status')
             ->whereIn('d.iddocumento', $subQuery)
+            ->where('t.ativo', true)
             ->when($cursoId, fn($q) => $q->where('a.Curso_idcurso', $cursoId))
             ->orderByDesc('d.dataEmissao')
             ->select([
@@ -342,6 +343,18 @@ class ProfessorService
         );
 
         return ['success' => true, 'message' => 'Modelo salvo com sucesso!', 'caminho' => $caminhoRelativo];
+    }
+
+    public function removerModelo(string $tipoNome): array
+    {
+        $tipoId = \App\Models\Tipo::where('nome', $tipoNome)->value('idtipo');
+        if (!$tipoId) return ['ok' => false, 'erro' => 'Tipo não encontrado'];
+
+        // Zera o caminho mas mantém o registro no banco
+        \App\Models\Modelo::where('tipo_idtipo', $tipoId)
+            ->update(['caminho_arquivo' => null, 'nome' => null, 'descricao' => null]);
+
+        return ['ok' => true];
     }
 
     public function baixarModelo(string $tipoNome)

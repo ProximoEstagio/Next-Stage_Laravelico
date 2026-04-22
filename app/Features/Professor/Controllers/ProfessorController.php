@@ -176,6 +176,13 @@ class ProfessorController extends Controller
         return response()->json($resultado);
     }
 
+    public function removerModelo(Request $request)
+    {
+        $tipo = $request->input('tipo');
+        if (!$tipo) return response()->json(['ok' => false, 'erro' => 'Tipo obrigatório'], 400);
+        return response()->json($this->service->removerModelo($tipo));
+    }
+
     public function baixarModelo(Request $request)
     {
         $tipo   = $request->query('tipo');

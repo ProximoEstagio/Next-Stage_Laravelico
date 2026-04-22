@@ -1,13 +1,13 @@
 /**
  * popupModelo.js — Upload de modelo de documento (API Laravel)
  */
-document.addEventListener('DOMContentLoaded', function () {
-    const popupLayer = document.querySelector('#popup-layer');
-    let tipoSelecionado = '';
+let tipoSelecionado = "";
 
-    if (!popupLayer) return;
+function iniciarPopupModelo() {
+  const popupLayer = document.querySelector("#popup-layer");
+  if (!popupLayer) return;
 
-    popupLayer.innerHTML = `
+  popupLayer.innerHTML = `
         <div class="popup slim container">
             <div class="topV rw jc-sb">
                 <p class="TopTxt">Criar novo Modelo de Documento</p>
@@ -26,65 +26,79 @@ document.addEventListener('DOMContentLoaded', function () {
             </div>
         </div>`;
 
-    // Abrir popup
-    document.querySelectorAll("[data-open-popup='modelo']").forEach(btn => {
-        btn.addEventListener('click', () => {
-            tipoSelecionado = btn.getAttribute('data-tipo') || '';
-            popupLayer.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            document.getElementById('tipoSelecionadoTxt').textContent =
-                tipoSelecionado ? `Tipo selecionado: ${tipoSelecionado}` : 'Tipo não definido';
-        });
+  // Abrir popup ao clicar em "Novo Modelo"
+  document.querySelectorAll("[data-open-popup='modelo']").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      tipoSelecionado = btn.getAttribute("data-tipo") || "";
+      popupLayer.classList.add("active");
+      document.body.style.overflow = "hidden";
+      document.getElementById("tipoSelecionadoTxt").textContent =
+        tipoSelecionado
+          ? `Tipo selecionado: ${tipoSelecionado}`
+          : "Tipo não definido";
     });
+  });
 
-    document.getElementById('close-popup').addEventListener('click', () => {
-        popupLayer.classList.remove('active');
-        document.body.style.overflow = 'auto';
-    });
-    popupLayer.addEventListener('click', e => {
-        if (e.target === popupLayer) {
-            popupLayer.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-    });
+  document.getElementById("close-popup").addEventListener("click", fecharPopup);
+  popupLayer.addEventListener("click", (e) => {
+    if (e.target === popupLayer) fecharPopup();
+  });
 
-    // Arquivo
-    document.getElementById('btnUpload').addEventListener('click', () =>
-        document.getElementById('fileinput').click()
+  document
+    .getElementById("btnUpload")
+    .addEventListener("click", () =>
+      document.getElementById("fileinput").click()
     );
-    document.getElementById('fileinput').addEventListener('change', e => {
-        const arquivo = e.target.files[0];
-        document.getElementById('nomeArquivoText').textContent = arquivo ? arquivo.name + ' anexado' : '';
+  document.getElementById("fileinput").addEventListener("change", (e) => {
+    const arquivo = e.target.files[0];
+    document.getElementById("nomeArquivoText").textContent = arquivo
+      ? arquivo.name + " anexado"
+      : "";
+  });
+
+  document
+    .getElementById("btnSalvarModelo")
+    .addEventListener("click", async () => {
+      const instrucoes = document.getElementById("instrucoes").value.trim();
+      const arquivo = document.getElementById("fileinput").files[0];
+
+      if (!arquivo || !tipoSelecionado) {
+        alert("Selecione um arquivo e defina o tipo antes de salvar.");
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append("instrucoes", instrucoes);
+      formData.append("tipoDocumento", tipoSelecionado);
+      formData.append("arquivo", arquivo);
+      formData.append(
+        "professor_id",
+        localStorage.getItem("idprofessor") || "1"
+      );
+
+      const data = await Api.upload("/professor/modelos/upload", formData);
+
+      if (data?.success) {
+        alert(`Modelo do tipo ${tipoSelecionado} salvo com sucesso!`);
+        fecharPopup();
+        await carregarModelos(); // Recarrega os cards sem dar reload
+      } else {
+        alert("Erro ao salvar: " + (data?.message || "Erro desconhecido."));
+      }
     });
+}
 
-    // Salvar
-    document.getElementById('btnSalvarModelo').addEventListener('click', async () => {
-        const instrucoes = document.getElementById('instrucoes').value.trim();
-        const arquivo    = document.getElementById('fileinput').files[0];
+function fecharPopup() {
+  const popupLayer = document.querySelector("#popup-layer");
+  if (!popupLayer) return;
+  popupLayer.classList.remove("active");
+  document.body.style.overflow = "auto";
+  document.getElementById("instrucoes").value = "";
+  document.getElementById("fileinput").value = "";
+  document.getElementById("nomeArquivoText").textContent = "";
+}
 
-        if (!arquivo || !tipoSelecionado) {
-            alert('Selecione um arquivo e defina o tipo antes de salvar.');
-            return;
-        }
-
-        const formData = new FormData();
-        formData.append('instrucoes',    instrucoes);
-        formData.append('tipoDocumento', tipoSelecionado);
-        formData.append('arquivo',       arquivo);
-        formData.append('professor_id',  localStorage.getItem('idprofessor') || '1');
-
-        const data = await Api.upload('/professor/modelos/upload', formData);
-
-        if (data?.success) {
-            alert(`Modelo do tipo ${tipoSelecionado} salvo com sucesso!`);
-            document.getElementById('instrucoes').value = '';
-            document.getElementById('fileinput').value  = '';
-            document.getElementById('nomeArquivoText').textContent = '';
-            popupLayer.classList.remove('active');
-            document.body.style.overflow = 'auto';
-            location.reload();
-        } else {
-            alert('Erro ao salvar: ' + (data?.message || 'Erro desconhecido.'));
-        }
-    });
+document.addEventListener("DOMContentLoaded", () => {
+  // Será chamado também pelo modelo.js após renderizar o grid
+  iniciarPopupModelo();
 });

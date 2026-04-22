@@ -61,6 +61,11 @@ class AdminController extends Controller
 
     // ── Tipos ─────────────────────────────────────────────────────────────────
 
+    public function listarTiposSimples()
+    {
+        return response()->json($this->service->listarTipos());
+    }
+
     public function gerenciarTipos(Request $request)
     {
         if ($request->isMethod('GET')) {

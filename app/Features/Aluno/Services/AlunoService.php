@@ -28,6 +28,7 @@ class AlunoService
                      ->on('f.validacao_documento_tipo_idtipo', '=', 'd.tipo_idtipo');
             })
             ->where('d.aluno_idaluno', $alunoId)
+            ->where('t.ativo', true)
             ->orderByDesc('d.iddocumento')
             ->select([
                 'd.iddocumento', 'd.dataEmissao', 'd.descricao',

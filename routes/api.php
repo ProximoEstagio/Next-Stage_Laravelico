@@ -39,6 +39,9 @@ Route::middleware(['auth.token:professor'])->prefix('professor')->group(function
     Route::post('/aluno/criar',    [ProfessorController::class, 'criarAluno']);
     Route::post('/alunos/csv',          [ProfessorController::class, 'cadastrarAlunos']);
     Route::post('/alunos/verificar',     [ProfessorController::class, 'verificarDuplicatas']);
+
+    // Tipos (acessível para professor e admin)
+    Route::get('/tipos',               [AdminController::class, 'listarTiposSimples']);
     Route::post('/aluno/concluir', [ProfessorController::class, 'setConcluido']);
 
     // Documentos
@@ -50,7 +53,8 @@ Route::middleware(['auth.token:professor'])->prefix('professor')->group(function
     Route::post('/prazos',         [ProfessorController::class, 'salvarPrazo']);
 
     // Upload de modelos (só professor)
-    Route::post('/modelos/upload', [ProfessorController::class, 'uploadModelo']);
+    Route::post('/modelos/upload',  [ProfessorController::class, 'uploadModelo']);
+    Route::post('/modelos/remover',  [ProfessorController::class, 'removerModelo']);
 });
 
 // ── Admin (professor com nível admin) ─────────────────────────────────────────

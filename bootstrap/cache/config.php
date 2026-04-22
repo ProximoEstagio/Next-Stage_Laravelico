@@ -25,16 +25,16 @@
   array (
     'paths' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\next-stage-completo\\next-stage\\resources\\views',
+      0 => 'C:\\Users\\henri\\Downloads\\Next-Stage_Laravelico\\resources\\views',
     ),
-    'compiled' => 'C:\\xampp\\htdocs\\next-stage-completo\\next-stage\\storage\\framework\\views',
+    'compiled' => 'C:\\Users\\henri\\Downloads\\Next-Stage_Laravelico\\storage\\framework\\views',
   ),
   'app' => 
   array (
     'name' => 'Próximo Estágio',
-    'env' => 'local',
-    'debug' => true,
-    'url' => 'http://localhost:8000',
+    'env' => 'production',
+    'debug' => false,
+    'url' => 'http://localhost',
     'frontend_url' => 'http://localhost:3000',
     'asset_url' => NULL,
     'timezone' => 'America/Sao_Paulo',
@@ -42,7 +42,7 @@
     'fallback_locale' => 'en',
     'faker_locale' => 'pt_BR',
     'cipher' => 'AES-256-CBC',
-    'key' => 'base64:5yGjCIxMPu5xWZoFQUqHeWirBvmQUsxlbq+lDVazufc=',
+    'key' => NULL,
     'previous_keys' => 
     array (
     ),
@@ -165,7 +165,7 @@
   ),
   'broadcasting' => 
   array (
-    'default' => NULL,
+    'default' => 'null',
     'connections' => 
     array (
       'reverb' => 
@@ -221,7 +221,7 @@
   ),
   'cache' => 
   array (
-    'default' => 'file',
+    'default' => 'database',
     'stores' => 
     array (
       'array' => 
@@ -245,8 +245,8 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => 'C:\\xampp\\htdocs\\next-stage-completo\\next-stage\\storage\\framework/cache/data',
-        'lock_path' => 'C:\\xampp\\htdocs\\next-stage-completo\\next-stage\\storage\\framework/cache/data',
+        'path' => 'C:\\Users\\henri\\Downloads\\Next-Stage_Laravelico\\storage\\framework/cache/data',
+        'lock_path' => 'C:\\Users\\henri\\Downloads\\Next-Stage_Laravelico\\storage\\framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -299,7 +299,7 @@
         ),
       ),
     ),
-    'prefix' => 'proximo_estagio_cache_',
+    'prefix' => 'laravel_cache_',
   ),
   'cors' => 
   array (
@@ -337,7 +337,7 @@
       array (
         'driver' => 'sqlite',
         'url' => NULL,
-        'database' => 'proximo_estagio',
+        'database' => 'C:\\Users\\henri\\Downloads\\Next-Stage_Laravelico\\database\\database.sqlite',
         'prefix' => '',
         'prefix_indexes' => NULL,
         'foreign_key_constraints' => true,
@@ -375,7 +375,7 @@
         'url' => NULL,
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'proximo_estagio',
+        'database' => 'laravel',
         'username' => 'root',
         'password' => '',
         'unix_socket' => '',
@@ -394,8 +394,8 @@
         'driver' => 'pgsql',
         'url' => NULL,
         'host' => '127.0.0.1',
-        'port' => '3306',
-        'database' => 'proximo_estagio',
+        'port' => '5432',
+        'database' => 'laravel',
         'username' => 'root',
         'password' => '',
         'charset' => 'utf8',
@@ -408,9 +408,9 @@
       array (
         'driver' => 'sqlsrv',
         'url' => NULL,
-        'host' => '127.0.0.1',
-        'port' => '3306',
-        'database' => 'proximo_estagio',
+        'host' => 'localhost',
+        'port' => '1433',
+        'database' => 'laravel',
         'username' => 'root',
         'password' => '',
         'charset' => 'utf8',
@@ -429,7 +429,7 @@
       'options' => 
       array (
         'cluster' => 'redis',
-        'prefix' => 'proximo_estagio_database_',
+        'prefix' => 'laravel_database_',
         'persistent' => false,
       ),
       'default' => 
@@ -462,13 +462,13 @@
   ),
   'filesystems' => 
   array (
-    'default' => 'public',
+    'default' => 'local',
     'disks' => 
     array (
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\xampp\\htdocs\\next-stage-completo\\next-stage\\storage\\app/private',
+        'root' => 'C:\\Users\\henri\\Downloads\\Next-Stage_Laravelico\\storage\\app/private',
         'serve' => true,
         'throw' => false,
         'report' => false,
@@ -476,8 +476,8 @@
       'public' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\xampp\\htdocs\\next-stage-completo\\next-stage\\storage\\app/public',
-        'url' => 'http://localhost:8000/storage',
+        'root' => 'C:\\Users\\henri\\Downloads\\Next-Stage_Laravelico\\storage\\app/public',
+        'url' => '/storage',
         'visibility' => 'public',
         'throw' => false,
         'report' => false,
@@ -498,7 +498,7 @@
     ),
     'links' => 
     array (
-      'C:\\xampp\\htdocs\\next-stage-completo\\next-stage\\public\\storage' => 'C:\\xampp\\htdocs\\next-stage-completo\\next-stage\\storage\\app/public',
+      'C:\\Users\\henri\\Downloads\\Next-Stage_Laravelico\\public\\storage' => 'C:\\Users\\henri\\Downloads\\Next-Stage_Laravelico\\storage\\app/public',
     ),
   ),
   'logging' => 
@@ -523,14 +523,14 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => 'C:\\xampp\\htdocs\\next-stage-completo\\next-stage\\storage\\logs/laravel.log',
+        'path' => 'C:\\Users\\henri\\Downloads\\Next-Stage_Laravelico\\storage\\logs/laravel.log',
         'level' => 'debug',
         'replace_placeholders' => true,
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => 'C:\\xampp\\htdocs\\next-stage-completo\\next-stage\\storage\\logs/laravel.log',
+        'path' => 'C:\\Users\\henri\\Downloads\\Next-Stage_Laravelico\\storage\\logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
         'replace_placeholders' => true,
@@ -541,7 +541,7 @@
         'url' => NULL,
         'username' => 'Laravel Log',
         'emoji' => ':boom:',
-        'level' => 'debug',
+        'level' => 'critical',
         'replace_placeholders' => true,
       ),
       'papertrail' => 
@@ -592,7 +592,7 @@
       ),
       'emergency' => 
       array (
-        'path' => 'C:\\xampp\\htdocs\\next-stage-completo\\next-stage\\storage\\logs/laravel.log',
+        'path' => 'C:\\Users\\henri\\Downloads\\Next-Stage_Laravelico\\storage\\logs/laravel.log',
       ),
     ),
   ),
@@ -605,7 +605,7 @@
       array (
         'transport' => 'smtp',
         'host' => '127.0.0.1',
-        'port' => '2525',
+        'port' => 2525,
         'encryption' => 'tls',
         'username' => NULL,
         'password' => NULL,
@@ -660,7 +660,7 @@
     ),
     'from' => 
     array (
-      'address' => 'hello@proximoestagio.com',
+      'address' => 'hello@example.com',
       'name' => 'Próximo Estágio',
     ),
     'markdown' => 
@@ -668,7 +668,7 @@
       'theme' => 'default',
       'paths' => 
       array (
-        0 => 'C:\\xampp\\htdocs\\next-stage-completo\\next-stage\\resources\\views/vendor/mail',
+        0 => 'C:\\Users\\henri\\Downloads\\Next-Stage_Laravelico\\resources\\views/vendor/mail',
       ),
       'extensions' => 
       array (
@@ -738,13 +738,13 @@
     ),
     'batching' => 
     array (
-      'database' => 'proximo_estagio',
+      'database' => 'laravel',
       'table' => 'job_batches',
     ),
     'failed' => 
     array (
       'driver' => 'database-uuids',
-      'database' => 'proximo_estagio',
+      'database' => 'laravel',
       'table' => 'failed_jobs',
     ),
   ),
@@ -775,11 +775,11 @@
   ),
   'session' => 
   array (
-    'driver' => 'file',
-    'lifetime' => '120',
+    'driver' => 'database',
+    'lifetime' => 120,
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => 'C:\\xampp\\htdocs\\next-stage-completo\\next-stage\\storage\\framework/sessions',
+    'files' => 'C:\\Users\\henri\\Downloads\\Next-Stage_Laravelico\\storage\\framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -788,7 +788,7 @@
       0 => 2,
       1 => 100,
     ),
-    'cookie' => 'proximo_estagio_session',
+    'cookie' => 'laravel_session',
     'path' => '/',
     'domain' => NULL,
     'secure' => NULL,

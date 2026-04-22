@@ -13,6 +13,7 @@
     />
     <script src="../../public/script/config.js"></script>
     <script src="../../public/script/api.js"></script>
+    <script src="../../public/script/requireLogin.js"></script>
     <script src="scripts/nav.js" defer></script>
     <script src="scripts/popup.js" defer></script>
     <script src="scripts/uploadDoc.js" defer></script>
@@ -20,7 +21,6 @@
     <script src="../../public/script/dropdown.js" defer></script>
     <script src="../../public/script/acessibilidade.js" defer></script>
     <script src="../../public/script/script.js" defer></script>
-    <script src="../../public/script/requireLogin.js"></script>
     <script src="scripts/modelo.js" defer></script>
   </head>
   <body>
@@ -31,18 +31,7 @@
       <div class="container p16 cl g8">
         <p class="fs16"><b>Progresso de Entrega</b></p>
         <div class="rw g4" id="barra-progresso">
-          <!-- A -->
-          <div id="circle-A" class="circle"><p>A</p></div>
-          <div id="prog-A" class="progBar">
-            <div class="progProgres" style="width: 0%"></div>
-          </div>
-          <!-- B -->
-          <div id="circle-B" class="circle"><p>B</p></div>
-          <div id="prog-B" class="progBar">
-            <div class="progProgres" style="width: 0%"></div>
-          </div>
-          <!-- C -->
-          <div id="circle-C" class="circle"><p>C</p></div>
+          <!-- preenchida dinamicamente pelo progresso.js -->
         </div>
       </div>
 
@@ -102,44 +91,8 @@
         </p>
       </div>
 
-      <!-- Grid modelos -->
-      <div class="grid-col">
-        <div class="container cl p16 g32">
-          <div class="cl g8">
-            <p class="fs16"><b>Modelo do Documento A</b></p>
-            <p><b>Instruções :</b></p>
-            <p id="desc-modelo-A">
-              Esse termo deve conter dados do aluno, da empresa, do supervisor
-              direto e a data de início das atividades.
-            </p>
-          </div>
-          <button id="link-modelo-A" class="btn-V">Baixar Modelo</button>
-        </div>
-
-        <div class="container cl p16 g32">
-          <div class="cl g8">
-            <p class="fs16"><b>Modelo do Documento B</b></p>
-            <p><b>Instruções :</b></p>
-            <p id="desc-modelo-B">
-              O aluno descreve as atividades realizadas e as relaciona com o
-              conteúdo do curso.
-            </p>
-          </div>
-          <button id="link-modelo-B" class="btn-V">Baixar Modelo</button>
-        </div>
-
-        <div class="container cl p16 g32">
-          <div class="cl g8">
-            <p class="fs16"><b>Modelo do Documento C</b></p>
-            <p><b>Instruções :</b></p>
-            <p id="desc-modelo-C">
-              Declaração de Atividades, que formaliza o encerramento das
-              atividades desenvolvidas durante o período.
-            </p>
-          </div>
-          <button id="link-modelo-C" class="btn-V">Baixar Modelo</button>
-        </div>
-      </div>
+      <!-- Grid modelos — preenchido dinamicamente pelo modelo.js -->
+      <div class="grid-col" id="grid-modelos"></div>
     </div>
 
     <div id="popup-layer" class="hidden"></div>
