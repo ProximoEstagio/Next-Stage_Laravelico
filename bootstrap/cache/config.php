@@ -25,9 +25,9 @@
   array (
     'paths' => 
     array (
-      0 => 'C:\\Users\\Alunos\\Desktop\\Next-Stage_Laravelico\\resources\\views',
+      0 => 'C:\\Users\\Alunos\\Downloads\\Next-Stage_Laravelico\\resources\\views',
     ),
-    'compiled' => 'C:\\Users\\Alunos\\Desktop\\Next-Stage_Laravelico\\storage\\framework\\views',
+    'compiled' => 'C:\\Users\\Alunos\\Downloads\\Next-Stage_Laravelico\\storage\\framework\\views',
   ),
   'app' => 
   array (
@@ -42,7 +42,7 @@
     'fallback_locale' => 'en',
     'faker_locale' => 'pt_BR',
     'cipher' => 'AES-256-CBC',
-    'key' => 'base64:hUlgucmH/vVHv11DrrAUlnmjW/II3GugB9gCPXcfRq8=',
+    'key' => 'base64:txQ1HfzRO/R7iwSNT4t/DdsApSERxIDbBqHrouqCy80=',
     'previous_keys' => 
     array (
     ),
@@ -245,8 +245,8 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => 'C:\\Users\\Alunos\\Desktop\\Next-Stage_Laravelico\\storage\\framework/cache/data',
-        'lock_path' => 'C:\\Users\\Alunos\\Desktop\\Next-Stage_Laravelico\\storage\\framework/cache/data',
+        'path' => 'C:\\Users\\Alunos\\Downloads\\Next-Stage_Laravelico\\storage\\framework/cache/data',
+        'lock_path' => 'C:\\Users\\Alunos\\Downloads\\Next-Stage_Laravelico\\storage\\framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -468,7 +468,7 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\Users\\Alunos\\Desktop\\Next-Stage_Laravelico\\storage\\app/private',
+        'root' => 'C:\\Users\\Alunos\\Downloads\\Next-Stage_Laravelico\\storage\\app/private',
         'serve' => true,
         'throw' => false,
         'report' => false,
@@ -476,7 +476,7 @@
       'public' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\Users\\Alunos\\Desktop\\Next-Stage_Laravelico\\storage\\app/public',
+        'root' => 'C:\\Users\\Alunos\\Downloads\\Next-Stage_Laravelico\\storage\\app/public',
         'url' => 'http://localhost:8000/storage',
         'visibility' => 'public',
         'throw' => false,
@@ -498,7 +498,7 @@
     ),
     'links' => 
     array (
-      'C:\\Users\\Alunos\\Desktop\\Next-Stage_Laravelico\\public\\storage' => 'C:\\Users\\Alunos\\Desktop\\Next-Stage_Laravelico\\storage\\app/public',
+      'C:\\Users\\Alunos\\Downloads\\Next-Stage_Laravelico\\public\\storage' => 'C:\\Users\\Alunos\\Downloads\\Next-Stage_Laravelico\\storage\\app/public',
     ),
   ),
   'logging' => 
@@ -523,14 +523,14 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => 'C:\\Users\\Alunos\\Desktop\\Next-Stage_Laravelico\\storage\\logs/laravel.log',
+        'path' => 'C:\\Users\\Alunos\\Downloads\\Next-Stage_Laravelico\\storage\\logs/laravel.log',
         'level' => 'debug',
         'replace_placeholders' => true,
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => 'C:\\Users\\Alunos\\Desktop\\Next-Stage_Laravelico\\storage\\logs/laravel.log',
+        'path' => 'C:\\Users\\Alunos\\Downloads\\Next-Stage_Laravelico\\storage\\logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
         'replace_placeholders' => true,
@@ -592,7 +592,7 @@
       ),
       'emergency' => 
       array (
-        'path' => 'C:\\Users\\Alunos\\Desktop\\Next-Stage_Laravelico\\storage\\logs/laravel.log',
+        'path' => 'C:\\Users\\Alunos\\Downloads\\Next-Stage_Laravelico\\storage\\logs/laravel.log',
       ),
     ),
   ),
@@ -668,7 +668,7 @@
       'theme' => 'default',
       'paths' => 
       array (
-        0 => 'C:\\Users\\Alunos\\Desktop\\Next-Stage_Laravelico\\resources\\views/vendor/mail',
+        0 => 'C:\\Users\\Alunos\\Downloads\\Next-Stage_Laravelico\\resources\\views/vendor/mail',
       ),
       'extensions' => 
       array (
@@ -779,7 +779,7 @@
     'lifetime' => '120',
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => 'C:\\Users\\Alunos\\Desktop\\Next-Stage_Laravelico\\storage\\framework/sessions',
+    'files' => 'C:\\Users\\Alunos\\Downloads\\Next-Stage_Laravelico\\storage\\framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
