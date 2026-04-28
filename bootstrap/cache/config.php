@@ -32,9 +32,9 @@
   'app' => 
   array (
     'name' => 'Próximo Estágio',
-    'env' => 'production',
-    'debug' => false,
-    'url' => 'http://localhost',
+    'env' => 'local',
+    'debug' => true,
+    'url' => 'http://localhost:8000',
     'frontend_url' => 'http://localhost:3000',
     'asset_url' => NULL,
     'timezone' => 'America/Sao_Paulo',
@@ -42,7 +42,7 @@
     'fallback_locale' => 'en',
     'faker_locale' => 'pt_BR',
     'cipher' => 'AES-256-CBC',
-    'key' => NULL,
+    'key' => 'base64:omnSHMLGjb8DQpkefvmiAdh6Khf+eAHPc918nN3NLEc=',
     'previous_keys' => 
     array (
     ),
@@ -165,7 +165,7 @@
   ),
   'broadcasting' => 
   array (
-    'default' => 'null',
+    'default' => NULL,
     'connections' => 
     array (
       'reverb' => 
@@ -221,7 +221,7 @@
   ),
   'cache' => 
   array (
-    'default' => 'database',
+    'default' => 'file',
     'stores' => 
     array (
       'array' => 
@@ -299,7 +299,7 @@
         ),
       ),
     ),
-    'prefix' => 'laravel_cache_',
+    'prefix' => 'proximo_estagio_cache_',
   ),
   'cors' => 
   array (
@@ -337,7 +337,7 @@
       array (
         'driver' => 'sqlite',
         'url' => NULL,
-        'database' => 'C:\\Users\\malok\\Desktop\\atividade pierre\\Next-Stage_Laravelico\\database\\database.sqlite',
+        'database' => 'proximo_estagio',
         'prefix' => '',
         'prefix_indexes' => NULL,
         'foreign_key_constraints' => true,
@@ -375,7 +375,7 @@
         'url' => NULL,
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'laravel',
+        'database' => 'proximo_estagio',
         'username' => 'root',
         'password' => '',
         'unix_socket' => '',
@@ -394,8 +394,8 @@
         'driver' => 'pgsql',
         'url' => NULL,
         'host' => '127.0.0.1',
-        'port' => '5432',
-        'database' => 'laravel',
+        'port' => '3306',
+        'database' => 'proximo_estagio',
         'username' => 'root',
         'password' => '',
         'charset' => 'utf8',
@@ -408,9 +408,9 @@
       array (
         'driver' => 'sqlsrv',
         'url' => NULL,
-        'host' => 'localhost',
-        'port' => '1433',
-        'database' => 'laravel',
+        'host' => '127.0.0.1',
+        'port' => '3306',
+        'database' => 'proximo_estagio',
         'username' => 'root',
         'password' => '',
         'charset' => 'utf8',
@@ -429,7 +429,7 @@
       'options' => 
       array (
         'cluster' => 'redis',
-        'prefix' => 'laravel_database_',
+        'prefix' => 'proximo_estagio_database_',
         'persistent' => false,
       ),
       'default' => 
@@ -462,7 +462,7 @@
   ),
   'filesystems' => 
   array (
-    'default' => 'local',
+    'default' => 'public',
     'disks' => 
     array (
       'local' => 
@@ -477,7 +477,7 @@
       array (
         'driver' => 'local',
         'root' => 'C:\\Users\\malok\\Desktop\\atividade pierre\\Next-Stage_Laravelico\\storage\\app/public',
-        'url' => '/storage',
+        'url' => 'http://localhost:8000/storage',
         'visibility' => 'public',
         'throw' => false,
         'report' => false,
@@ -541,7 +541,7 @@
         'url' => NULL,
         'username' => 'Laravel Log',
         'emoji' => ':boom:',
-        'level' => 'critical',
+        'level' => 'debug',
         'replace_placeholders' => true,
       ),
       'papertrail' => 
@@ -605,7 +605,7 @@
       array (
         'transport' => 'smtp',
         'host' => '127.0.0.1',
-        'port' => 2525,
+        'port' => '2525',
         'encryption' => 'tls',
         'username' => NULL,
         'password' => NULL,
@@ -660,7 +660,7 @@
     ),
     'from' => 
     array (
-      'address' => 'hello@example.com',
+      'address' => 'hello@proximoestagio.com',
       'name' => 'Próximo Estágio',
     ),
     'markdown' => 
@@ -738,13 +738,13 @@
     ),
     'batching' => 
     array (
-      'database' => 'laravel',
+      'database' => 'proximo_estagio',
       'table' => 'job_batches',
     ),
     'failed' => 
     array (
       'driver' => 'database-uuids',
-      'database' => 'laravel',
+      'database' => 'proximo_estagio',
       'table' => 'failed_jobs',
     ),
   ),
@@ -775,8 +775,8 @@
   ),
   'session' => 
   array (
-    'driver' => 'database',
-    'lifetime' => 120,
+    'driver' => 'file',
+    'lifetime' => '120',
     'expire_on_close' => false,
     'encrypt' => false,
     'files' => 'C:\\Users\\malok\\Desktop\\atividade pierre\\Next-Stage_Laravelico\\storage\\framework/sessions',
@@ -788,7 +788,7 @@
       0 => 2,
       1 => 100,
     ),
-    'cookie' => 'laravel_session',
+    'cookie' => 'proximo_estagio_session',
     'path' => '/',
     'domain' => NULL,
     'secure' => NULL,
