@@ -10,6 +10,11 @@ document.addEventListener("DOMContentLoaded", () => {
   carregarTipos();
   carregarProfessores();
   carregarCursos();
+  carregarFaq();
+
+  document
+    .getElementById("btn-nova-faq")
+    .addEventListener("click", abrirPopupNovaFaq);
 
   document
     .getElementById("btn-criar-tipo")
@@ -375,4 +380,76 @@ function fecharPopup() {
   const popup = document.getElementById("popup-layer");
   popup.classList.remove("active");
   document.body.style.overflow = "auto";
+}
+
+// ── FAQ ───────────────────────────────────────────────────────────────
+
+async function carregarFaq() {
+  const lista = document.getElementById("lista-faq");
+
+  if (!lista) return;
+
+  lista.innerHTML = "<p>Carregando...</p>";
+
+  const data = await Api.get("/admin/faq").catch(() => null);
+
+  if (!data || !data.length) {
+    lista.innerHTML = "<p>Nenhuma pergunta cadastrada.</p>";
+    return;
+  }
+
+  lista.innerHTML = data.map(f => `
+    <div class="container cl" style="border:none;box-shadow:none;">
+      <p><b>${f.pergunta}</b></p>
+      <p>${f.resposta}</p>
+    </div>
+  `).join("");
+}
+
+function abrirPopupNovaFaq() {
+  const popup = document.getElementById("popup-layer");
+
+  popup.innerHTML = `
+    <div class="popup slim container">
+      <div class="topV rw jc-sb">
+        <p class="TopTxt">Nova Pergunta</p>
+        <span id="close-popup" class="icon closeW"></span>
+      </div>
+
+      <div class="cl p16 g16">
+        <input id="faq-pergunta" placeholder="Pergunta" type="text">
+        <textarea id="faq-resposta" placeholder="Resposta"></textarea>
+        <button id="btn-salvar-faq" class="btn-V">Salvar</button>
+      </div>
+    </div>
+  `;
+
+  popup.classList.add("active");
+  document.body.style.overflow = "hidden";
+
+  document.getElementById("close-popup").onclick = fecharPopup;
+  document.getElementById("btn-salvar-faq").onclick = salvarFaq;
+}
+
+async function salvarFaq() {
+  const pergunta = document.getElementById("faq-pergunta").value.trim();
+  const resposta = document.getElementById("faq-resposta").value.trim();
+
+  if (!pergunta || !resposta) {
+    alert("Preencha todos os campos.");
+    return;
+  }
+
+  const data = await Api.post("/admin/faq", {
+    pergunta,
+    resposta
+  });
+
+  if (data?.ok) {
+    alert("FAQ criado!");
+    fecharPopup();
+    carregarFaq();
+  } else {
+    alert(data?.erro || "Erro ao salvar FAQ.");
+  }
 }

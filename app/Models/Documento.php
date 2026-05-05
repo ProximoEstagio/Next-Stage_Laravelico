@@ -9,9 +9,10 @@ class Documento extends Model
     protected $table    = 'documento';
     protected $primaryKey = 'iddocumento';
     protected $fillable = [
-        'dataEmissao', 'descricao', 'aluno_idaluno', 'tipo_idtipo', 'caminho_arquivo',
+        'dataEmissao', 'descricao', 'aluno_idaluno', 'tipo_idtipo', 'caminho_arquivo', 'corrigido_por_professor',
     ];
 
+    
     public function aluno()
     {
         return $this->belongsTo(Aluno::class, 'aluno_idaluno', 'idaluno');

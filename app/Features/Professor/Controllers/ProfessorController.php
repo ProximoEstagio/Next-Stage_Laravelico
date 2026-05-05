@@ -59,10 +59,14 @@ class ProfessorController extends Controller
         $alunos      = $request->input('alunos', []);
         $professorId = $request->input('professor_id');
 
-        if (empty($alunos))      return response()->json(['erro' => 'Nenhum aluno enviado'], 400);
-        if (!$professorId)       return response()->json(['erro' => 'Professor não identificado'], 400);
+        if (empty($alunos))  return response()->json(['erro' => 'Nenhum aluno enviado'], 400);
+        if (!$professorId)   return response()->json(['erro' => 'Professor não identificado'], 400);
 
-        return response()->json($this->service->cadastrarAlunos($alunos, (int) $professorId, $request->input("curso_id") ? (int) $request->input("curso_id") : null));
+        return response()->json($this->service->cadastrarAlunos(
+            $alunos,
+            (int) $professorId,
+            $request->input('curso_id') ? (int) $request->input('curso_id') : null
+        ));
     }
 
     public function verificarDuplicatas(Request $request)
@@ -74,10 +78,7 @@ class ProfessorController extends Controller
         $rasExistentes    = \App\Models\Aluno::whereIn('ra', $ras)->pluck('ra')->toArray();
         $emailsExistentes = \App\Models\Aluno::whereIn('email', $emails)->pluck('email')->toArray();
 
-        return response()->json([
-            'ras'    => $rasExistentes,
-            'emails' => $emailsExistentes,
-        ]);
+        return response()->json(['ras' => $rasExistentes, 'emails' => $emailsExistentes]);
     }
 
     public function setConcluido(Request $request)
@@ -119,6 +120,25 @@ class ProfessorController extends Controller
             (int) $request->input('tipo_id'),
             $request->input('status'),
             $request->input('feedback') ?? ''
+        );
+
+        return response()->json($resultado);
+    }
+
+    public function corrigirDocumento(Request $request)
+    {
+        $request->validate([
+            'arquivo'      => ['required', 'file'],
+            'documento_id' => ['required', 'integer'],
+            'tipo_id'      => ['required', 'integer'],
+            'professor_id' => ['required', 'integer'],
+        ]);
+
+        $resultado = $this->service->corrigirDocumento(
+            (int) $request->input('professor_id'),
+            (int) $request->input('documento_id'),
+            (int) $request->input('tipo_id'),
+            $request->file('arquivo')
         );
 
         return response()->json($resultado);
@@ -199,5 +219,14 @@ class ProfessorController extends Controller
         }
 
         return response()->download($caminho, $modelo->nome);
+    }
+
+    // ── Tipos (acessível para professor e admin) ──────────────────────────────
+
+    public function listarTipos()
+    {
+        return response()->json(
+            \App\Models\Tipo::orderBy('ordem')->get()
+        );
     }
 }

@@ -173,6 +173,35 @@ class ProfessorService
         return ['ok' => true];
     }
 
+
+    public function corrigirDocumento(int $professorId, int $documentoId, int $tipoId, $arquivo): array
+    {
+        $docOriginal = \App\Models\Documento::where('iddocumento', $documentoId)->first();
+        if (!$docOriginal) return ['ok' => false, 'erro' => 'Documento não encontrado'];
+
+        $alunoId = $docOriginal->aluno_idaluno;
+
+        // Salva o arquivo corrigido na pasta do aluno
+        $nomeArquivo     = time() . '_prof_' . $arquivo->getClientOriginalName();
+        $pasta           = "aluno_{$alunoId}";
+        $caminhoRelativo = "uploads/{$pasta}/{$nomeArquivo}";
+
+        \Illuminate\Support\Facades\Storage::disk('public')
+            ->putFileAs("uploads/{$pasta}", $arquivo, $nomeArquivo);
+
+        // Cria novo documento marcado como corrigido pelo professor
+        \App\Models\Documento::create([
+            'dataEmissao'             => now(),
+            'descricao'               => $docOriginal->descricao . ' (corrigido pelo professor)',
+            'aluno_idaluno'           => $alunoId,
+            'tipo_idtipo'             => $tipoId,
+            'caminho_arquivo'         => $caminhoRelativo,
+            'corrigido_por_professor' => true,
+        ]);
+
+        return ['ok' => true];
+    }
+
     // ── Concluir / desconcluir aluno ─────────────────────────────────────────
 
     public function setConcluido(int $alunoId, bool $concluido): array

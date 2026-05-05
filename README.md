@@ -26,6 +26,8 @@ Sistema de Gestão de Estágio Supervisionado para a Fatec Franco da Rocha.
 ## Instalação
 
 ```bash
+# PS: SUBSTITUIR O ARQUIVO PHP.INI QUE ESTA NO SEU PHP PELO PHP.INI DESTE PROJETO!
+
 # 1. Instalar dependências
 composer install
 

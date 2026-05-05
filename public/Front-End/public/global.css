@@ -1175,3 +1175,115 @@ select {
   --clock: #996600;
   --clock-50: #ffeecc;
 }
+
+/* ── Tooltips nos ícones da navbar ──────────────────────────────────────────── */
+
+[title] {
+  position: relative;
+}
+
+.icon-nav[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: -32px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  font-size: 11px;
+  white-space: nowrap;
+  padding: 3px 8px;
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+a[title] .icon-nav:hover::after,
+a[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: -32px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  font-size: 11px;
+  white-space: nowrap;
+  padding: 3px 8px;
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ── Modo Noturno ───────────────────────────────────────────────────────────── */
+
+[tema="dark"] {
+  --cinza: #e0e0e0;
+  --cinza-claro: #c0c0c0;
+  --background-color: #302f2f;
+  --fundo: #1d1d1d;
+  --cor-border: #2a2a2a;
+  --eye: #2986ff;
+  --check-50: #0fff1b20;
+  --clock-50: #ffcc0015;
+  --off-50: #ff000030;
+  --eye-50: #004cff40;
+}
+
+[tema="dark"] body {
+  background-color: var(--fundo);
+  color: var(--cinza);
+}
+
+[tema="dark"] .container,
+[tema="dark"] .information-container {
+  background-color: var(--background-color);
+  border-color: var(--cor-border);
+}
+
+[tema="dark"] td {
+  background-color: var(--background-color);
+  color: var(--cinza);
+}
+
+[tema="dark"] input,
+[tema="dark"] textarea,
+[tema="dark"] select {
+  background-color: #3a3a3a;
+  color: var(--cinza);
+  border-color: var(--cor-border);
+}
+
+[tema="dark"] .menu-acess {
+  background: var(--background-color);
+  border-color: var(--cor-border);
+}
+
+[tema="dark"] .menu-acess button {
+  color: var(--cinza);
+  border-color: var(--cor-border);
+}
+
+[tema="dark"] .menu-acess button:hover {
+  background: var(--fundo);
+}
+
+[tema="dark"] .eye {
+  background-image: url(icons/eyeDark.svg);
+  border: var(--eye) 1px solid;
+}
+
+[tema="dark"] tr {
+  background-color: var(--background-color);
+}
+
+[tema="dark"] .btn-link {
+  background-color: var(--background-color);
+  border-color: var(--cinza-paleta);
+}
+
+[tema="dark"] .btn-F {
+  background-color: var(--background-color);
+  border-color: var(--cor-border);
+  color: var(--cinza);
+}

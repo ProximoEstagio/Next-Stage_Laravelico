@@ -9,7 +9,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   };
 
   try {
-    const data = await Api.get("/professor/modelos");
+    // const data = await Api.get("/professor/modelos");
+    const data = await Api.get("/aluno/modelos");
     if (!data?.success) return;
 
     const grid = document.getElementById("grid-modelos");
@@ -58,8 +59,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       const btn = document.getElementById("link-modelo-" + tipo.nome);
       if (btn && !btn.disabled) {
         btn.addEventListener("click", () => {
+          // Api.download(
+          //   "/professor/modelos/baixar",
           Api.download(
-            "/professor/modelos/baixar",
+            "/aluno/modelos/baixar",
             { tipo: tipo.nome },
             `Modelo_${tipo.nome}.pdf`
           );
