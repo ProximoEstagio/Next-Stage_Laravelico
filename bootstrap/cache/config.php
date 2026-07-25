@@ -25,9 +25,9 @@
   array (
     'paths' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\next-stage-completo\\next-stage\\resources\\views',
+      0 => 'C:\\Users\\malok\\OneDrive\\Favoritos\\Documentos\\GitHub\\Next-Stage_Laravelico\\resources\\views',
     ),
-    'compiled' => 'C:\\xampp\\htdocs\\next-stage-completo\\next-stage\\storage\\framework\\views',
+    'compiled' => 'C:\\Users\\malok\\OneDrive\\Favoritos\\Documentos\\GitHub\\Next-Stage_Laravelico\\storage\\framework\\views',
   ),
   'app' => 
   array (
@@ -42,7 +42,7 @@
     'fallback_locale' => 'en',
     'faker_locale' => 'pt_BR',
     'cipher' => 'AES-256-CBC',
-    'key' => 'base64:5yGjCIxMPu5xWZoFQUqHeWirBvmQUsxlbq+lDVazufc=',
+    'key' => 'base64:ScgHtDa43twH35q6AJvdKgSS69rMfF0a7ZsHlWf9aKk=',
     'previous_keys' => 
     array (
     ),
@@ -245,8 +245,8 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => 'C:\\xampp\\htdocs\\next-stage-completo\\next-stage\\storage\\framework/cache/data',
-        'lock_path' => 'C:\\xampp\\htdocs\\next-stage-completo\\next-stage\\storage\\framework/cache/data',
+        'path' => 'C:\\Users\\malok\\OneDrive\\Favoritos\\Documentos\\GitHub\\Next-Stage_Laravelico\\storage\\framework/cache/data',
+        'lock_path' => 'C:\\Users\\malok\\OneDrive\\Favoritos\\Documentos\\GitHub\\Next-Stage_Laravelico\\storage\\framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -468,7 +468,7 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\xampp\\htdocs\\next-stage-completo\\next-stage\\storage\\app/private',
+        'root' => 'C:\\Users\\malok\\OneDrive\\Favoritos\\Documentos\\GitHub\\Next-Stage_Laravelico\\storage\\app/private',
         'serve' => true,
         'throw' => false,
         'report' => false,
@@ -476,7 +476,7 @@
       'public' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\xampp\\htdocs\\next-stage-completo\\next-stage\\storage\\app/public',
+        'root' => 'C:\\Users\\malok\\OneDrive\\Favoritos\\Documentos\\GitHub\\Next-Stage_Laravelico\\storage\\app/public',
         'url' => 'http://localhost:8000/storage',
         'visibility' => 'public',
         'throw' => false,
@@ -498,7 +498,7 @@
     ),
     'links' => 
     array (
-      'C:\\xampp\\htdocs\\next-stage-completo\\next-stage\\public\\storage' => 'C:\\xampp\\htdocs\\next-stage-completo\\next-stage\\storage\\app/public',
+      'C:\\Users\\malok\\OneDrive\\Favoritos\\Documentos\\GitHub\\Next-Stage_Laravelico\\public\\storage' => 'C:\\Users\\malok\\OneDrive\\Favoritos\\Documentos\\GitHub\\Next-Stage_Laravelico\\storage\\app/public',
     ),
   ),
   'logging' => 
@@ -523,14 +523,14 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => 'C:\\xampp\\htdocs\\next-stage-completo\\next-stage\\storage\\logs/laravel.log',
+        'path' => 'C:\\Users\\malok\\OneDrive\\Favoritos\\Documentos\\GitHub\\Next-Stage_Laravelico\\storage\\logs/laravel.log',
         'level' => 'debug',
         'replace_placeholders' => true,
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => 'C:\\xampp\\htdocs\\next-stage-completo\\next-stage\\storage\\logs/laravel.log',
+        'path' => 'C:\\Users\\malok\\OneDrive\\Favoritos\\Documentos\\GitHub\\Next-Stage_Laravelico\\storage\\logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
         'replace_placeholders' => true,
@@ -592,7 +592,7 @@
       ),
       'emergency' => 
       array (
-        'path' => 'C:\\xampp\\htdocs\\next-stage-completo\\next-stage\\storage\\logs/laravel.log',
+        'path' => 'C:\\Users\\malok\\OneDrive\\Favoritos\\Documentos\\GitHub\\Next-Stage_Laravelico\\storage\\logs/laravel.log',
       ),
     ),
   ),
@@ -668,7 +668,7 @@
       'theme' => 'default',
       'paths' => 
       array (
-        0 => 'C:\\xampp\\htdocs\\next-stage-completo\\next-stage\\resources\\views/vendor/mail',
+        0 => 'C:\\Users\\malok\\OneDrive\\Favoritos\\Documentos\\GitHub\\Next-Stage_Laravelico\\resources\\views/vendor/mail',
       ),
       'extensions' => 
       array (
@@ -779,7 +779,7 @@
     'lifetime' => '120',
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => 'C:\\xampp\\htdocs\\next-stage-completo\\next-stage\\storage\\framework/sessions',
+    'files' => 'C:\\Users\\malok\\OneDrive\\Favoritos\\Documentos\\GitHub\\Next-Stage_Laravelico\\storage\\framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
