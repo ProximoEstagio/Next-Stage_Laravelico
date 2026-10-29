@@ -29,17 +29,17 @@ class DatabaseSeeder extends Seeder
         DB::table('professor')->insertOrIgnore([
             [
                 'idprofessor' => 1,
-                'nome'        => 'Admin Teste',
+                'nome'        => 'Secretaria',
                 'registro'    => '1234567890123',
-                'email'       => 'admin@admin.com',
-                'senha'       => Hash::make('admin'),
+                'email'       => 'Secretaria@gmail.com',
+                'senha'       => Hash::make('123456'),
                 'nivel'       => 'admin',
             ],
             [
                 'idprofessor' => 2,
-                'nome'        => 'Professor Responsavel',
+                'nome'        => 'Professor',
                 'registro'    => '0000000000000',
-                'email'       => 'professor@gmail.com',
+                'email'       => 'Professor@gmail.com',
                 'senha'       => Hash::make('123456'),
                 'nivel'       => 'professor',
             ],
@@ -55,12 +55,12 @@ class DatabaseSeeder extends Seeder
         DB::table('aluno')->insertOrIgnore([
             [
                 'idaluno'       => 1,
-                'nome'          => 'Aluno Exemplo',
+                'nome'          => 'Aluno',
                 'ra'            => '1234567890123',
-                'email'         => 'teste@gmail.com',
+                'email'         => 'Aluno@gmail.com',
                 'Curso_idcurso' => 1,
                 'semestre'      => 2,
-                'senha'         => Hash::make('teste123'),
+                'senha'         => Hash::make('123456'),
                 'concluido'     => 0,
             ],
         ]);
