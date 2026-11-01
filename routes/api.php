@@ -10,9 +10,13 @@ use App\Features\Perfil\Controllers\PerfilController;
 use App\Features\FAQ\Controllers\FaqController;
 
 // ── Públicas ──────────────────────────────────────────────────────────────────
-Route::post('/login',           [AuthController::class, 'login']);
+Route::post('/login',           [AuthController::class, 'login'])->middleware('throttle:10,1');
 Route::post('/logout',          [AuthController::class, 'logout']);
 Route::post('/verificar-token', [AuthController::class, 'verificarToken']);
+
+// 2FA (segunda etapa do login)
+Route::post('/2fa/verificar', [AuthController::class, 'verificarDoisFatores'])->middleware('throttle:10,1');
+Route::post('/2fa/reenviar',  [AuthController::class, 'reenviarDoisFatores'])->middleware('throttle:5,1');
 
 // ── Perfil ────────────────────────────────────────────────────────────────────
 Route::middleware('auth.token')->group(function () {

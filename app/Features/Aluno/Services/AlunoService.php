@@ -4,7 +4,10 @@ namespace App\Features\Aluno\Services;
 
 use DateTime;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
+use App\Mail\DocumentoEnviadoMail;
 use App\Models\Documento;
 use App\Models\Tipo;
 use App\Models\PrazoAluno;
@@ -147,7 +150,7 @@ class AlunoService
 
         Storage::disk('public')->putFileAs("uploads/{$pasta}", $arquivo, $nomeArquivo);
 
-        Documento::create([
+        $documento = Documento::create([
             'dataEmissao'    => now(),
             'descricao'      => $descricao,
             'aluno_idaluno'  => $alunoId,
@@ -155,6 +158,43 @@ class AlunoService
             'caminho_arquivo' => $caminhoRelativo,
         ]);
 
+        // Avisa o professor por e-mail (falha no envio não derruba o upload)
+        $this->notificarProfessor($aluno, $documento);
+
         return ['status' => 'sucesso', 'mensagem' => 'Documento enviado com sucesso!', 'link' => $caminhoRelativo];
+    }
+
+    // ── Notificar professor responsável por e-mail ────────────────────────────
+
+    private function notificarProfessor(Aluno $aluno, Documento $documento): void
+    {
+        try {
+            $professor = $aluno->curso?->professor;
+
+            if (!$professor || empty($professor->email)) {
+                Log::warning('Documento enviado, mas o curso do aluno não tem professor com e-mail', [
+                    'aluno_id'     => $aluno->idaluno,
+                    'documento_id' => $documento->iddocumento,
+                ]);
+                return;
+            }
+
+            $tipo = Tipo::find($documento->tipo_idtipo);
+
+            Mail::to($professor->email)->send(new DocumentoEnviadoMail(
+                nomeProfessor: $professor->nome,
+                nomeAluno:     $aluno->nome,
+                raAluno:       $aluno->ra,
+                tipoDocumento: $tipo?->nome ?? 'Documento',
+                descricao:     (string) $documento->descricao,
+                dataEnvio:     now()->format('d/m/Y \à\s H:i'),
+            ));
+        } catch (\Throwable $e) {
+            Log::error('Falha ao enviar e-mail de novo documento ao professor', [
+                'aluno_id'     => $aluno->idaluno,
+                'documento_id' => $documento->iddocumento,
+                'erro'         => $e->getMessage(),
+            ]);
+        }
     }
 }

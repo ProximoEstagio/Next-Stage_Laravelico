@@ -69,8 +69,8 @@ Acessa: `http://127.0.0.1:8000/Front-End/index.html`
 |------------|----------------------|----------|
 | Admin      | admin@admin.com      | admin    |
 | Professor  | professor@gmail.com  | 123456   |
-| Aluno      | Henrique@gmail.com   | teste123 |
-| Secretaria | Secretaria@gmail.com | 123456   |
+| Aluno      | henrique@gmail.com   | 123456   |
+| Secretaria | secretaria@gmail.com | 123456   |
 
 ---
 

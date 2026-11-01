@@ -12,6 +12,15 @@ class AuthService
 {
     private array $tiposPermitidos = ['aluno', 'professor', 'secretaria'];
 
+    public function __construct(private TwoFactorService $twoFactor) {}
+
+    /**
+     * Valida e-mail e senha.
+     * - 2FA desligado: retorna a resposta completa (com token), como antes.
+     * - 2FA ligado: NÃO emite token; retorna o desafio (requer2fa) e envia o código por e-mail.
+     *
+     * @throws \RuntimeException se o código 2FA não puder ser enviado
+     */
     public function login(string $email, string $senha): ?array
     {
         // Tenta cada tipo de usuário
@@ -19,6 +28,12 @@ class AuthService
             $user = $this->buscarUsuario($tipo, $email);
 
             if ($user && Hash::check($senha, $user->senha)) {
+                if ($this->twoFactor->ativo()) {
+                    $pk = $this->getPrimaryKey($tipo);
+
+                    return $this->twoFactor->iniciar($tipo, (int) $user->$pk, $user->email, $user->nome);
+                }
+
                 $token = $this->gerarToken($user, $tipo);
 
                 return $this->montarResposta($user, $tipo, $token);
@@ -26,6 +41,21 @@ class AuthService
         }
 
         return null;
+    }
+
+    /** Segunda etapa: emite o token depois que o código 2FA foi confirmado. */
+    public function concluirLogin(string $tipo, int $usuarioId): ?array
+    {
+        if (!in_array($tipo, $this->tiposPermitidos)) return null;
+
+        $pk   = $this->getPrimaryKey($tipo);
+        $user = $this->getModel($tipo)::where($pk, $usuarioId)->first();
+
+        if (!$user) return null;
+
+        $token = $this->gerarToken($user, $tipo);
+
+        return $this->montarResposta($user, $tipo, $token);
     }
 
     public function logout(string $tipo, string $email): bool
