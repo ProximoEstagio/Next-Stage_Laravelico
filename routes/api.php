@@ -8,6 +8,7 @@ use App\Features\Admin\Controllers\AdminController;
 use App\Features\Secretaria\Controllers\SecretariaController;
 use App\Features\Perfil\Controllers\PerfilController;
 use App\Features\FAQ\Controllers\FaqController;
+use App\Features\Notificacao\Controllers\NotificacaoController;
 
 // ── Públicas ──────────────────────────────────────────────────────────────────
 Route::post('/login',           [AuthController::class, 'login'])->middleware('throttle:10,1');
@@ -27,6 +28,13 @@ Route::middleware('auth.token')->group(function () {
     // Route::get('/professor/modelos',        [ProfessorController::class, 'listarModelos']);
     // Route::get('/professor/modelos/baixar', [ProfessorController::class, 'baixarModelo']);
 
+});
+
+// ── Notificações (aluno e professor) ──────────────────────────────────────────
+Route::middleware('auth.token:aluno,professor')->prefix('notificacoes')->group(function () {
+    Route::get('/',           [NotificacaoController::class, 'listar']);
+    Route::post('/ler',       [NotificacaoController::class, 'marcarLida']);
+    Route::post('/ler-todas', [NotificacaoController::class, 'marcarTodasLidas']);
 });
 
 // ── Aluno ─────────────────────────────────────────────────────────────────────

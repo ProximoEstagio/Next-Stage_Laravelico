@@ -176,14 +176,9 @@ async function carregarProgresso() {
 }
 
 function atualizarSino(notificacoes, todosPrazos) {
-    const sino  = document.getElementById('sino-notificacoes');
-    const badge = document.getElementById('sino-badge');
-    if (!sino || !badge) return;
-
-    badge.textContent   = notificacoes.length;
-    badge.style.display = notificacoes.length > 0 ? 'flex' : 'none';
-
-    sino.addEventListener('click', () => exibirPopupPrazos(todosPrazos));
+    // O clique e o contador do sino são de notificacoes.js; aqui só informamos os alertas de prazo
+    window._prazosAlerta = notificacoes.length;
+    window.Notificacoes?.atualizarBadge();
 }
 
 function exibirPopupNotificacoes(notificacoes) {

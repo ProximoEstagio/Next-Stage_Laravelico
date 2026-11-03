@@ -17,11 +17,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         window._todosPrazos = prazos;
 
-        const badge = document.getElementById('sino-badge');
-        if (badge) {
-            badge.textContent   = notificacoes.length;
-            badge.style.display = notificacoes.length > 0 ? 'flex' : 'none';
-        }
+        // O contador do sino é desenhado por notificacoes.js (novidades + alertas de prazo)
+        window._prazosAlerta = notificacoes.length;
+        window.Notificacoes?.atualizarBadge();
 
         if (notificacoes.length > 0 && !sessionStorage.getItem('notif_exibida')) {
             exibirPopupNotificacoes(notificacoes);
@@ -29,12 +27,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     } catch (e) {
         console.error('Erro ao carregar sino:', e);
-    }
-});
-
-document.addEventListener('click', (e) => {
-    if (e.target.closest('#sino-notificacoes')) {
-        if (window._todosPrazos) exibirPopupPrazos(window._todosPrazos);
     }
 });
 

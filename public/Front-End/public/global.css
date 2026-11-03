@@ -1287,3 +1287,98 @@ a[title]:hover::after {
   border-color: var(--cor-border);
   color: var(--cinza);
 }
+
+/* --- --- Notificações (sino) --- --- */
+
+.notif-painel {
+  position: fixed;
+  z-index: 9999;
+  max-height: min(70vh, 480px);
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background-color);
+  color: var(--cinza);
+  border: 1px solid var(--cor-border);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+
+.notif-topo,
+.notif-rodape {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 14px;
+}
+
+.notif-topo { border-bottom: 1px solid var(--cor-border); }
+.notif-rodape { border-top: 1px solid var(--cor-border); justify-content: center; }
+
+.notif-lista { overflow-y: auto; }
+
+.notif-item {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 14px;
+  text-align: left;
+  background: transparent;
+  color: inherit;
+  border: 0;
+  border-bottom: 1px solid var(--cor-border);
+  cursor: pointer;
+  font: inherit;
+}
+
+.notif-item:hover { background-color: var(--cinza-hover); }
+
+.notif-item.nao-lida {
+  background-color: var(--fundo);
+  box-shadow: inset 3px 0 0 var(--vermelho);
+}
+
+.notif-texto { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.notif-titulo { font-weight: 600; }
+.notif-item:not(.nao-lida) .notif-titulo { font-weight: 500; }
+.notif-msg { font-size: 13px; overflow-wrap: anywhere; }
+.notif-tempo { font-size: 11px; opacity: 0.7; }
+
+.notif-vazio { padding: 24px 14px; text-align: center; opacity: 0.8; }
+
+.notif-link {
+  background: transparent;
+  border: 0;
+  color: var(--vermelho);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.notif-link:disabled { opacity: 0.4; cursor: default; text-decoration: none; }
+
+.notif-toast {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 10000;
+  max-width: min(360px, calc(100vw - 32px));
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 12px 14px;
+  text-align: left;
+  font: inherit;
+  color: var(--cinza);
+  background-color: var(--background-color);
+  border: 1px solid var(--cor-border);
+  border-left: 4px solid var(--vermelho);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+}
+
+.notif-toast span { font-size: 13px; overflow-wrap: anywhere; }
+.notif-toast small { opacity: 0.7; }

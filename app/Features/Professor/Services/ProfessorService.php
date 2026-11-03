@@ -5,6 +5,7 @@ namespace App\Features\Professor\Services;
 use DateTime;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use App\Features\Notificacao\Services\NotificacaoService;
 use App\Models\Aluno;
 use App\Models\Curso;
 use App\Models\Documento;
@@ -17,6 +18,8 @@ use App\Models\PrazoAluno;
 
 class ProfessorService
 {
+    public function __construct(private NotificacaoService $notificacoes) {}
+
     // ── Listar alunos com status por tipo ─────────────────────────────────────
 
     public function listarAlunos(string $nivel, ?int $professorId, ?int $cursoId = null): array
@@ -152,12 +155,16 @@ class ProfessorService
         $codStatus = Status::where('nomeStatus', $nomeStatus)->value('cod_status');
         if (!$codStatus) return ['ok' => false, 'erro' => 'Status inválido'];
 
-        DB::statement("
-            INSERT INTO validacao 
-                (professor_idprofessor, documento_iddocumento, documento_tipo_idtipo, status_cod_status)
-            VALUES (?, ?, ?, ?)
-            ON DUPLICATE KEY UPDATE status_cod_status = VALUES(status_cod_status)
-        ", [$professorId, $documentoId, $tipoId, $codStatus]);
+        $chaves = [
+            'professor_idprofessor' => $professorId,
+            'documento_iddocumento' => $documentoId,
+            'documento_tipo_idtipo' => $tipoId,
+        ];
+
+        // Status anterior: evita notificar o aluno de novo se nada mudou
+        $statusAnterior = DB::table('validacao')->where($chaves)->value('status_cod_status');
+
+        DB::table('validacao')->updateOrInsert($chaves, ['status_cod_status' => $codStatus]);
 
         if (!empty($feedback) && $nomeStatus !== 'Visualizado') {
             $alunoId = Documento::where('iddocumento', $documentoId)->value('aluno_idaluno');
@@ -168,6 +175,11 @@ class ProfessorService
                 'validacao_documento_iddocumento'  => $documentoId,
                 'validacao_professor_idprofessor'  => $professorId,
             ]);
+        }
+
+        // Avisa o aluno (só se o status mudou ou se veio feedback novo)
+        if ($statusAnterior === null || (int) $statusAnterior !== (int) $codStatus || trim($feedback) !== '') {
+            $this->notificacoes->documentoAvaliado($documentoId, $nomeStatus, $feedback);
         }
 
         return ['ok' => true];
@@ -198,6 +210,8 @@ class ProfessorService
             'caminho_arquivo'         => $caminhoRelativo,
             'corrigido_por_professor' => true,
         ]);
+
+        $this->notificacoes->documentoCorrigido($docOriginal);
 
         return ['ok' => true];
     }
@@ -319,6 +333,12 @@ class ProfessorService
 
     public function salvarPrazo(int $alunoId, int $tipoId, ?string $dataLimite): array
     {
+        $anterior = PrazoAluno::where('aluno_idaluno', $alunoId)
+            ->where('tipo_idtipo', $tipoId)
+            ->value('dataLimite');
+        $anterior = $anterior ? substr((string) $anterior, 0, 10) : null;
+        $novo     = $dataLimite ? substr($dataLimite, 0, 10) : null;
+
         if ($dataLimite) {
             PrazoAluno::updateOrCreate(
                 ['aluno_idaluno' => $alunoId, 'tipo_idtipo' => $tipoId],
@@ -327,6 +347,11 @@ class ProfessorService
         } else {
             PrazoAluno::where('aluno_idaluno', $alunoId)->where('tipo_idtipo', $tipoId)->delete();
         }
+
+        if ($anterior !== $novo) {
+            $this->notificacoes->prazoAtualizado($alunoId, $tipoId, $novo);
+        }
+
         return ['ok' => true];
     }
 

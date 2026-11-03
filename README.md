@@ -141,6 +141,27 @@ app/
 | `admin/listarProfessores.php`           | `GET /api/admin/professores`            | auth.token:professor + admin |
 | `admin/createProfessor.php`             | `POST /api/admin/professores`           | auth.token:professor + admin |
 | `secretaria/listarAlunosConcluidos.php` | `GET /api/secretaria/alunos-concluidos` | auth.token:secretaria        |
+| — (novo) notificações do usuário        | `GET /api/notificacoes`                 | auth.token:aluno,professor   |
+| — (novo) marcar uma como lida           | `POST /api/notificacoes/ler`            | auth.token:aluno,professor   |
+| — (novo) marcar todas como lidas        | `POST /api/notificacoes/ler-todas`      | auth.token:aluno,professor   |
+
+---
+
+## Notificações no sistema (sino)
+
+Aluno e professor têm um sino na barra de navegação com contador de não lidas. Os avisos são gravados na tabela `notificacao` (`php artisan migrate`) e o front atualiza sozinho a cada 30s.
+
+| Evento                                          | Quem recebe |
+|-------------------------------------------------|-------------|
+| Aluno envia documento                           | Professor do curso do aluno |
+| Professor valida ou invalida (com feedback)     | Aluno |
+| Professor envia versão corrigida                | Aluno |
+| Professor define, altera ou remove um prazo     | Aluno |
+
+- O destinatário é sempre o dono do token (nunca vem do body), então ninguém lê ou marca notificação de outro usuário.
+- Falha ao gravar a notificação é logada e **não** derruba a ação principal (mesma regra do e-mail).
+- Reavaliar com o mesmo status e sem feedback novo não gera aviso repetido; status `Visualizado` não notifica.
+- Código: `app/Features/Notificacao/`, `app/Models/Notificacao.php`, `public/Front-End/public/script/notificacoes.js`.
 
 ---
 

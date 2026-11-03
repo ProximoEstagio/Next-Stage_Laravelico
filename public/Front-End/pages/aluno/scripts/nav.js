@@ -1,9 +1,3 @@
-document.addEventListener("click", (e) => {
-  if (e.target.closest("#sino-notificacoes")) {
-    document.dispatchEvent(new CustomEvent("abrirPrazos"));
-  }
-});
-
 document.addEventListener("DOMContentLoaded", function () {
   const BASE = window.BASE;
   const navElement = document.querySelector("nav");

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
+use App\Features\Notificacao\Services\NotificacaoService;
 use App\Mail\DocumentoEnviadoMail;
 use App\Models\Documento;
 use App\Models\Tipo;
@@ -15,6 +16,8 @@ use App\Models\Aluno;
 
 class AlunoService
 {
+    public function __construct(private NotificacaoService $notificacoes) {}
+
     // ── Listar documentos do aluno com status, feedback e prazos ──────────────
 
     public function listarDocumentos(int $alunoId): array
@@ -158,18 +161,21 @@ class AlunoService
             'caminho_arquivo' => $caminhoRelativo,
         ]);
 
-        // Avisa o professor por e-mail (falha no envio não derruba o upload)
+        // Avisa o professor: sino no sistema + e-mail (falha em qualquer um não derruba o upload)
         $this->notificarProfessor($aluno, $documento);
 
         return ['status' => 'sucesso', 'mensagem' => 'Documento enviado com sucesso!', 'link' => $caminhoRelativo];
     }
 
-    // ── Notificar professor responsável por e-mail ────────────────────────────
+    // ── Notificar professor responsável (sino + e-mail) ───────────────────────
 
     private function notificarProfessor(Aluno $aluno, Documento $documento): void
     {
         try {
             $professor = $aluno->curso?->professor;
+
+            // Notificação dentro do sistema (independe de o professor ter e-mail)
+            $this->notificacoes->documentoEnviado($aluno, $documento, $professor);
 
             if (!$professor || empty($professor->email)) {
                 Log::warning('Documento enviado, mas o curso do aluno não tem professor com e-mail', [

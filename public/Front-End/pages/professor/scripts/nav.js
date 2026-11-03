@@ -31,6 +31,14 @@ document.addEventListener("DOMContentLoaded", function () {
                                       <button data-modo="alto-contraste">Alto Contraste</button>
                                   </div>
                               </div>
+                              <a id="sino-notificacoes" style="position:relative;cursor:pointer;" title="Notificações" role="button">
+                                  <span class="icon-nav" style="background-image:url('../../public/icons/sino.png')"></span>
+                                  <span id="sino-badge" style="
+                                      display:none;position:absolute;top:2px;right:2px;
+                                      background:var(--vermelho);color:#fff;border-radius:50%;
+                                      width:16px;height:16px;font-size:10px;
+                                      align-items:center;justify-content:center;"></span>
+                              </a>
                           </div>
                       </div>
                   </div>
